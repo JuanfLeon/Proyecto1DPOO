@@ -4,10 +4,10 @@ public class Producto {
 
 	//Attributes 
 	protected String nombre ;
-	protected float precio ;
+	protected double precio ;
 	
 	//Constructor 
-	public Producto(String nombre, float precio) {
+	public Producto(String nombre, double precio) {
 		super();
 		this.nombre = nombre;
 		this.precio = precio;
@@ -20,10 +20,10 @@ public class Producto {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public float getPrecio() {
+	public double getPrecio() {
 		return precio;
 	}
-	public void setPrecio(float precio) {
+	public void setPrecio(double precio) {
 		this.precio = precio;
 	}
 	

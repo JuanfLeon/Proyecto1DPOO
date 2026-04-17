@@ -9,8 +9,7 @@ public class DetalleVenta {
 
 	private Producto producto;
 	private int cantidad;
-	private float subtotal;
-	private float impuestos;
+	private double subtotal;
+	private double impuestos;
 	private String tipoCompra;
-	private ArrayList<JuegoDeMesaFisico> juegosComprados;
 }
