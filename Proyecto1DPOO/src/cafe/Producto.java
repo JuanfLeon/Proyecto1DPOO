@@ -2,14 +2,18 @@ package cafe;
 
 public class Producto {
 
+	//Attributes 
 	protected String nombre ;
 	protected float precio ;
 	
+	//Constructor 
 	public Producto(String nombre, float precio) {
 		super();
 		this.nombre = nombre;
 		this.precio = precio;
 	}
+	
+	//Getters y Setters 
 	public String getNombre() {
 		return nombre;
 	}
