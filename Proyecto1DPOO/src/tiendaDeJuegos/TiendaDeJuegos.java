@@ -3,6 +3,9 @@ package tiendaDeJuegos;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import dataBase.DetalleVenta;
+import dataBase.Factura;
+import dataBase.Usuario;
 import exceptions.JuegoNoDisponibleException;
 
 public class TiendaDeJuegos {
@@ -27,16 +30,20 @@ public class TiendaDeJuegos {
 																					juegosDeseados.get(nombreJuego),
 																					TipoInventario.VENTAS);
 			DetalleVenta detalleVenta =gestorVentaJuegos.crearDetalleVenta(inventarioJuegos, nombreJuego, juegosDeseados.get(nombreJuego), TipoVenta.TIENDADEJUEGOS);
-			detallesVenta.append(detalleVenta);
+			detallesVenta.add(detalleVenta);
 			
 			inventarioJuegos.eliminarPrimerJuego(nombreJuego, TipoInventario.VENTAS);
 		}	
-		Factura faturaVenta=gestorVentaJuegos.construirFactura(detallesVenta, propina, descuento, cliente);
+		Factura facturaVenta=gestorVentaJuegos.construirFactura(detallesVenta, propina, descuento, cliente);
 		
 		return facturaVenta;
 		
 	}
-	public Prestamo prestarJuego()
+	
+	
+	public Prestamo prestarJuego() {
+		
+	}
 	
 	
 }

@@ -1,15 +1,22 @@
 package tiendaDeJuegos;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+
+import com.sun.org.apache.bcel.internal.generic.INSTANCEOF;
+
 import java.time.LocalDate;
 import calculadora.CalculadoraVentaJuegos;
+import dataBase.DetalleVenta;
+import dataBase.Empleado;
+import dataBase.Factura;
 import exceptions.JuegoNoDisponibleException;
 
 public class GestorVentaJuegos {
 	private CalculadoraVentaJuegos calc;
 	
-	public double calcularTotalVenta () {
-		return Math.round(calc.calcularTotal());
+	public double calcularTotalVenta (double subtotal, double impuestos, double propina, double descuento) {
+		return Math.round(calc.calcularTotalJuegos(subtotal,impuestos,propina,descuento));
 	}
 	
 	
@@ -27,7 +34,7 @@ public class GestorVentaJuegos {
 			return new DetalleVenta(juego,cantidad,subtotal,impuestos,TipoVenta.TIENDADEJUEGOS);
 		}
 	}
-	public Factura construirFactura(List<DetalleVenta> detallesVenta, double porcentajePropina,boolean tieneDescuento, Usuario cliente) {
+	public Factura construirFactura(ArrayList<DetalleVenta> detallesVenta, double porcentajePropina,boolean tieneDescuento, Usuario cliente) {
 		LocalDate fecha= LocalDate.now();
 		double subtotal= 0.0;
 		double impuestos= 0.0;
@@ -38,13 +45,13 @@ public class GestorVentaJuegos {
 		}
 		double descuento=0.0;
 		double propina= calc.calcularPropina(subtotal, porcentajePropina); 
-		if (cliente.isInstance(Empleado)) {
+		if (cliente instanceof Empleado) {
 			descuento=calc.calcularDescuento(cliente, subtotal);
 		}
 		else if(tieneDescuento) {
 			descuento=calc.calcularDescuento(subtotal, tieneDescuento);
 		}
-		double total= calc.calcularTotalJuegos(subtotal,impuestos,propina, descuento);
+		double total= calcularTotalVenta(subtotal,impuestos,propina, descuento);
 		return new Factura(fecha, subtotal, impuestos, propina,descuento, total);
 	}
 }
