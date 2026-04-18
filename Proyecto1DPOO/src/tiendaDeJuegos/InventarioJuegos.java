@@ -141,6 +141,9 @@ public class InventarioJuegos {
 		}
 		
 	}
+	public void agregarPrestamoAHistorial(Prestamo prestamo) {
+		historialDePrestamos.add(prestamo);
+	}
 	
 
 }

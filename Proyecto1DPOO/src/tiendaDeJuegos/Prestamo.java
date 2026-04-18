@@ -1,12 +1,12 @@
 package tiendaDeJuegos;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Prestamo {
 	private String idJuego;
 	private String idMesa;
-	private Date fechaInicio;
-	private Date fechaFin;
+	private LocalDate fechaInicio;
+	private LocalDate fechaFin;
 	
 	public String getIdJuego() {
 		return idJuego;
@@ -20,17 +20,25 @@ public class Prestamo {
 	public void setIdMesa(String idMesa) {
 		this.idMesa = idMesa;
 	}
-	public Date getFechaInicio() {
+	public LocalDate getFechaInicio() {
 		return fechaInicio;
 	}
-	public void setFechaInicio(Date fechaInicio) {
+	public void setFechaInicio(LocalDate fechaInicio) {
 		this.fechaInicio = fechaInicio;
 	}
-	public Date getFechaFin() {
+	public LocalDate getFechaFin() {
 		return fechaFin;
 	}
-	public void setFechaFin(Date fechaFin) {
+	public void setFechaFin(LocalDate fechaFin) {
 		this.fechaFin = fechaFin;
 	}
+	public Prestamo(String idJuego, String idMesa, LocalDate fechaActual, LocalDate tiempoLimite) {
+		this.idJuego = idJuego;
+		this.idMesa = idMesa;
+		this.fechaInicio = fechaActual;
+		this.fechaFin = tiempoLimite;
+	}
+	
+
 
 }

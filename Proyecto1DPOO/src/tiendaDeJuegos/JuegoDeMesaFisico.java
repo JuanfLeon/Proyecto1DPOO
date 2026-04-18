@@ -19,11 +19,21 @@ public class JuegoDeMesaFisico extends JuegoDeMesa{
 		this.prestado = prestado;
 	}
 	
-	public JuegoDeMesaFisico(String idJuego, String nombre, Date anoPublicacion, String empresaProduccion,
-			TipoDeJuego tipoDeJuego, int minJugadores, int maxJugadores, int edadMinima, String caracteristicas,
-			boolean dificil, String estadoDelJuego, boolean prestado) {
-		
-		super(idJuego, nombre, anoPublicacion, empresaProduccion, tipoDeJuego, minJugadores, maxJugadores, edadMinima,
+	public JuegoDeMesaFisico(String idJuego, 
+							 String nombre, 
+							 double precio,
+							 Date anoPublicacion, 
+							 String empresaProduccion,
+							 TipoDeJuego tipoDeJuego, 
+							 int minJugadores, 
+							 int maxJugadores, 
+							 int edadMinima, 
+							 String caracteristicas,
+							 boolean dificil, 
+							 String estadoDelJuego, 
+							 boolean prestado) 
+	{
+		super(idJuego, nombre, precio, anoPublicacion, empresaProduccion, tipoDeJuego, minJugadores, maxJugadores, edadMinima,
 				caracteristicas, dificil);
 		this.estadoDelJuego = estadoDelJuego;
 		this.prestado = prestado;
