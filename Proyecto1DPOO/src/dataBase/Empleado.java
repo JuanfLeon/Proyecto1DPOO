@@ -34,6 +34,22 @@ public abstract class Empleado extends Usuario{
 	public void eliminarTurno(Turno turno) {
 	        turnoLaboral.remove(turno);
 	    }
+
+	public List<Turno> getTurnoLaboral() {
+		return turnoLaboral;
+	}
+
+	public void setTurnoLaboral(List<Turno> turnoLaboral) {
+		this.turnoLaboral = turnoLaboral;
+	}
+
+	public String getCodigoDescuento() {
+		return codigoDescuento;
+	}
+
+	public void setCodigoDescuento(String codigoDescuento) {
+		this.codigoDescuento = codigoDescuento;
+	}
 	    
 	   
 }

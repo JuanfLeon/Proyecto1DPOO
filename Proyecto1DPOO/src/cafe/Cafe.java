@@ -10,6 +10,7 @@ public class Cafe {
 	private int capacidadMaxClientes ;
 	private List<Empleado> empleados ;
 	private ArrayList<Mesa> mesas ;
+	private ArrayList<Producto> catalogoPlatillos ;
 	
 	//Constructor
 	public Cafe(int capacidadMaxClientes, List<Empleado> empleados, ArrayList<Mesa> mesas) {
@@ -38,5 +39,15 @@ public class Cafe {
 	public void setMesas(ArrayList<Mesa> mesas) {
 		this.mesas = mesas;
 	}
+
+	public ArrayList<Producto> getCatalogoPlatillos() {
+		return catalogoPlatillos;
+	}
+
+	public void setCatalogoPlatillos(ArrayList<Producto> catalogoPlatillos) {
+		this.catalogoPlatillos = catalogoPlatillos;
+	}
+	
+	
 }
 

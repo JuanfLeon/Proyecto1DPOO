@@ -12,5 +12,9 @@ public abstract class Solicitud {
 	public Empleado getSolicitante() {
 		return solicitante;
 	}
+
+	public void setSolicitante(Empleado solicitante) {
+		this.solicitante = solicitante;
+	}
 	
 }

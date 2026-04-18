@@ -38,5 +38,25 @@ public class Factura {
 	public List<DetalleVenta> getDetallesDeLaVenta() {
 		return detallesDeLaVenta;
 	}
+
+	public void setFecha(LocalDateTime fecha) {
+		this.fecha = fecha;
+	}
+
+	public void setSubtotal(double subtotal) {
+		this.subtotal = subtotal;
+	}
+
+	public void setImpuestos(double impuestos) {
+		this.impuestos = impuestos;
+	}
+
+	public void setPropina(double propina) {
+		this.propina = propina;
+	}
+
+	public void setDetallesDeLaVenta(List<DetalleVenta> detallesDeLaVenta) {
+		this.detallesDeLaVenta = detallesDeLaVenta;
+	}
 	
 }

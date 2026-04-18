@@ -13,4 +13,8 @@ public class SolicitudSugerenciaPlatillo extends Solicitud{
 	public String getPlatilloSugerido() {
 		return platilloSugerido;
 	}
+
+	public void setPlatilloSugerido(String platilloSugerido) {
+		this.platilloSugerido = platilloSugerido;
+	}
 }

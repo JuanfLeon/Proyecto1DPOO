@@ -19,6 +19,13 @@ public abstract class SolicitudTurno extends Solicitud{
 	public Turno getTurnoDeseado() {
 		return turnoDeseado;
 	}
-	
+
+	public void setTurnoInicial(Turno turnoInicial) {
+		this.turnoInicial = turnoInicial;
+	}
+
+	public void setTurnoDeseado(Turno turnoDeseado) {
+		this.turnoDeseado = turnoDeseado;
+	}
 	
 }

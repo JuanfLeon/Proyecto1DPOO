@@ -54,6 +54,42 @@ public class Informe {
 	public LocalDateTime getFechaFin() {
 		return fechaFin;
 	}
+
+	public void setTotalJuegos(double totalJuegos) {
+		this.totalJuegos = totalJuegos;
+	}
+
+	public void setTotalPlatillos(double totalPlatillos) {
+		this.totalPlatillos = totalPlatillos;
+	}
+
+	public void setSubTotalJuegos(double subTotalJuegos) {
+		this.subTotalJuegos = subTotalJuegos;
+	}
+
+	public void setSubTotalPlatillos(double subTotalPlatillos) {
+		this.subTotalPlatillos = subTotalPlatillos;
+	}
+
+	public void setTotalImpuestos(double totalImpuestos) {
+		this.totalImpuestos = totalImpuestos;
+	}
+
+	public void setTotalPropinas(double totalPropinas) {
+		this.totalPropinas = totalPropinas;
+	}
+
+	public void setTotalCosto(double totalCosto) {
+		this.totalCosto = totalCosto;
+	}
+
+	public void setFechaInicio(LocalDateTime fechaInicio) {
+		this.fechaInicio = fechaInicio;
+	}
+
+	public void setFechaFin(LocalDateTime fechaFin) {
+		this.fechaFin = fechaFin;
+	}
 	
 	
 }

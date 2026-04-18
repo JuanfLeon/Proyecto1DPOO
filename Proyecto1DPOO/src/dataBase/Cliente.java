@@ -20,4 +20,46 @@ public class Cliente extends Usuario{
 	public void actualizarPuntosFidelidad() {
 		
 	}
+
+	public String getIdCliente() {
+		return idCliente;
+	}
+
+	public void setIdCliente(String idCliente) {
+		this.idCliente = idCliente;
+	}
+
+	public double getPuntosFidelidad() {
+		return puntosFidelidad;
+	}
+
+	public void setPuntosFidelidad(double puntosFidelidad) {
+		this.puntosFidelidad = puntosFidelidad;
+	}
+
+	public Mesa getMesa() {
+		return mesa;
+	}
+
+	public void setMesa(Mesa mesa) {
+		this.mesa = mesa;
+	}
+
+	public List<JuegoDeMesaFisico> getJuegosPrestados() {
+		return juegosPrestados;
+	}
+
+	public void setJuegosPrestados(List<JuegoDeMesaFisico> juegosPrestados) {
+		this.juegosPrestados = juegosPrestados;
+	}
+
+	public List<JuegoDeMesaFisico> getJuegosComprados() {
+		return juegosComprados;
+	}
+
+	public void setJuegosComprados(List<JuegoDeMesaFisico> juegosComprados) {
+		this.juegosComprados = juegosComprados;
+	}
+	
+	
 }

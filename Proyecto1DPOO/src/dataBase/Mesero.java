@@ -13,4 +13,12 @@ public class Mesero extends Empleado{
 		super(login, juegosFav, contrasenia, turnos, codigo_desc);
 		this.juegosDificiles = juegosDificiles;
 	}
+
+	public List<JuegoDeMesa> getJuegosDificiles() {
+		return juegosDificiles;
+	}
+
+	public void setJuegosDificiles(List<JuegoDeMesa> juegosDificiles) {
+		this.juegosDificiles = juegosDificiles;
+	}
 }

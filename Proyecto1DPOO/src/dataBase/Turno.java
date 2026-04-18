@@ -98,5 +98,18 @@ public class Turno {
 	public ArrayList<Cocinero> getCocineros() {
 		return cocineros;
 	}
+
+	public void setDia_turno(DiaSemana dia_turno) {
+		this.dia_turno = dia_turno;
+	}
+
+	public void setMeseros(ArrayList<Mesero> meseros) {
+		this.meseros = meseros;
+	}
+
+	public void setCocineros(ArrayList<Cocinero> cocineros) {
+		this.cocineros = cocineros;
+	}
+	
 	
 }

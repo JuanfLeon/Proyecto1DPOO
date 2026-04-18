@@ -19,10 +19,7 @@ public class DataBase {
 		this.solicitudes = solicitudes;
 	}
 	
-	private Turno[] crearTurnos() {
-		return new Turno[7];
-	}
-
+	
 	public ArrayList<Informe> getInformes() {
 		return informes;
 	}
@@ -41,6 +38,26 @@ public class DataBase {
 
 	public ArrayList<Solicitud> getSolicitudes() {
 		return solicitudes;
+	}
+
+	public void setInformes(ArrayList<Informe> informes) {
+		this.informes = informes;
+	}
+
+	public void setFacturas(ArrayList<Factura> facturas) {
+		this.facturas = facturas;
+	}
+
+	public void setUsuarios(ArrayList<Usuario> usuarios) {
+		this.usuarios = usuarios;
+	}
+
+	public void setTurnos(Turno[] turnos) {
+		this.turnos = turnos;
+	}
+
+	public void setSolicitudes(ArrayList<Solicitud> solicitudes) {
+		this.solicitudes = solicitudes;
 	}
 	
 	

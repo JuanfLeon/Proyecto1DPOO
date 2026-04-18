@@ -12,5 +12,9 @@ public class SolicitudIntercambioTurno extends SolicitudTurno{
 	public Empleado getEmpleadoIntercambiable() {
 		return empleadoIntercambiable;
 	}
+
+	public void setEmpleadoIntercambiable(Empleado empleadoIntercambiable) {
+		this.empleadoIntercambiable = empleadoIntercambiable;
+	}
 	
 }
