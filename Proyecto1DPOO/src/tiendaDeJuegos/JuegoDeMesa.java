@@ -2,9 +2,10 @@ package tiendaDeJuegos;
 
 import java.util.Date;
 
+import cafe.Producto;
+
 public class JuegoDeMesa extends Producto{
 	protected String idJuego;
-	protected String nombre;
 	protected Date anoPublicacion;
 	protected String empresaProduccion;
 	protected TipoDeJuego tipoDeJuego;
@@ -94,11 +95,11 @@ public class JuegoDeMesa extends Producto{
 		return this.nombre;
 	}
 
-	public JuegoDeMesa(String idJuego, String nombre, Date anoPublicacion, String empresaProduccion,
+	public JuegoDeMesa(String idJuego, String nombre,double precio ,Date anoPublicacion, String empresaProduccion,
 			TipoDeJuego tipoDeJuego, int minJugadores, int maxJugadores, int edadMinima, String caracteristicas,
 			boolean dificil) {
+		super(nombre,precio);
 		this.idJuego = idJuego;
-		this.nombre = nombre;
 		this.anoPublicacion = anoPublicacion;
 		this.empresaProduccion = empresaProduccion;
 		this.tipoDeJuego = tipoDeJuego;

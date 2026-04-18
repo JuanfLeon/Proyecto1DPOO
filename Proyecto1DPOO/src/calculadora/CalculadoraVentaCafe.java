@@ -1,12 +1,14 @@
 package calculadora;
 
+import cafe.Mesa;
+
 public class CalculadoraVentaCafe implements Calculadora{
 
 	@Override
 	public double calcularImpuestos(double subtotal) {
 		return subtotal*impuestoConsumoAsociado;
 	}
-	@Override
+
 	public double calcularTotal(Mesa mesa, double propina) {
 		
 		double subtotal= calcularSubtotal(mesa);
