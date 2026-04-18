@@ -12,4 +12,12 @@ public class DetalleVenta {
 	private double subtotal;
 	private double impuestos;
 	private String tipoCompra;
+	
+	public DetalleVenta(Producto producto, int cantidad, double subtotal, double impuestos, String tipoCompra) {
+		this.producto = producto;
+		this.cantidad = cantidad;
+		this.subtotal = subtotal;
+		this.impuestos = impuestos;
+		this.tipoCompra = tipoCompra;
+	}
 }
