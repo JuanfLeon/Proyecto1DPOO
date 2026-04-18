@@ -7,10 +7,10 @@ public class Producto {
 	protected double precio ;
 	
 	//Constructor 
-	public Producto(String nombre, double precio2) {
+	public Producto(String nombre, double precio) {
 		super();
 		this.nombre = nombre;
-		this.precio = precio2;
+		this.precio = precio;
 	}
 	
 	//Getters y Setters 

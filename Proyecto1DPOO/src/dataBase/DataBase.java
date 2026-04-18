@@ -19,9 +19,9 @@ public class DataBase {
 		this.solicitudes = solicitudes;
 	}
 	
-//	private Turno[] crearTurnos() {
-//		
-//	}
+	private Turno[] crearTurnos() {
+		return new Turno[7];
+	}
 
 	public ArrayList<Informe> getInformes() {
 		return informes;

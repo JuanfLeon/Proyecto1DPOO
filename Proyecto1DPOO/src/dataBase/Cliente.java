@@ -12,7 +12,7 @@ public class Cliente extends Usuario{
 	}
 
 	private String idCliente;
-	private float puntosFidelidad;
+	private double puntosFidelidad;
 	private Mesa mesa;
 	private List<JuegoDeMesaFisico> juegosPrestados;
 	private List<JuegoDeMesaFisico> juegosComprados;

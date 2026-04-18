@@ -69,4 +69,12 @@ public class DetalleVenta {
 	public void setTipoVenta(TipoVenta tipoVenta) {
 		this.tipoVenta = tipoVenta;
 	}
+	
+	public DetalleVenta(Producto producto, int cantidad, double subtotal, double impuestos, String tipoCompra) {
+		this.producto = producto;
+		this.cantidad = cantidad;
+		this.subtotal = subtotal;
+		this.impuestos = impuestos;
+		this.tipoCompra = tipoCompra;
+	}
 }
