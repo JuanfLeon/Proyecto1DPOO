@@ -1,14 +1,14 @@
 package dataBase;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public abstract class Usuario {
 
 	protected String login;
-	protected List<String> juegosFavoritos;
+	protected ArrayList<String> juegosFavoritos;
 	protected String contrasenia;
 	
-	public Usuario(String login, List<String> juegosFav, String contrasenia) {
+	public Usuario(String login, ArrayList<String> juegosFav, String contrasenia) {
 		this.contrasenia = contrasenia;
 		this.juegosFavoritos = juegosFav;
 		this.login = login;
@@ -22,11 +22,11 @@ public abstract class Usuario {
 		this.login = login;
 	}
 
-	public List<String> getJuegosFavoritos() {
+	public ArrayList<String> getJuegosFavoritos() {
 		return juegosFavoritos;
 	}
 
-	public void setJuegosFavoritos(List<String> juegosFavoritos) {
+	public void setJuegosFavoritos(ArrayList<String> juegosFavoritos) {
 		this.juegosFavoritos = juegosFavoritos;
 	}
 

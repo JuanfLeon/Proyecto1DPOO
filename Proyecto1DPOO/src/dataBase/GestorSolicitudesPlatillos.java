@@ -1,15 +1,13 @@
 package dataBase;
 
-import java.util.ArrayList;
-
 import cafe.Cafe;
 import cafe.Producto;
 
 public class GestorSolicitudesPlatillos {
 
-	public void aceptarSolicitud(SolicitudSugerenciaPlatillo solicitud) {
+	public void aceptarSolicitud(Cafe cafe, SolicitudSugerenciaPlatillo solicitud) {
 		
-		String platillo = solicitud.getPlatilloSugerido();
-		ArrayList<Producto> catalogo = Cafe.getCatalogoPlatillos();
+		Producto platillo = (Producto) solicitud.getPlatilloSugerido();
+		cafe.agregarPlatillo(platillo);
 	}
 }

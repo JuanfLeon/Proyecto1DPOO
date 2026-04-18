@@ -1,14 +1,14 @@
 package dataBase;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public abstract class Empleado extends Usuario{
 
-	protected List<Turno> turnoLaboral;
+	protected ArrayList<Turno> turnoLaboral;
 	protected String codigoDescuento;
 	
 	
-	public Empleado(String login, List<String> juegosFav, String contrasenia, List<Turno> turnos, String codigo_desc) {
+	public Empleado(String login, ArrayList<String> juegosFav, String contrasenia, ArrayList<Turno> turnos, String codigo_desc) {
 		super(login, juegosFav, contrasenia);
 		this.codigoDescuento = codigo_desc;
 		this.turnoLaboral = turnos;
@@ -35,11 +35,11 @@ public abstract class Empleado extends Usuario{
 	        turnoLaboral.remove(turno);
 	    }
 
-	public List<Turno> getTurnoLaboral() {
+	public ArrayList<Turno> getTurnoLaboral() {
 		return turnoLaboral;
 	}
 
-	public void setTurnoLaboral(List<Turno> turnoLaboral) {
+	public void setTurnoLaboral(ArrayList<Turno> turnoLaboral) {
 		this.turnoLaboral = turnoLaboral;
 	}
 

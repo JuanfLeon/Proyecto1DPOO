@@ -1,7 +1,7 @@
 package dataBase;
 
 import java.time.LocalDateTime;
-import java.util.List;
+import java.util.ArrayList;
 
 public class Factura {
 
@@ -9,9 +9,9 @@ public class Factura {
 	private double subtotal;
 	private double impuestos;
 	private double propina;
-	private List<DetalleVenta> detallesDeLaVenta;
+	private ArrayList<DetalleVenta> detallesDeLaVenta;
 	
-	public Factura(LocalDateTime fecha, double subtotal, double impuestos, double propina, List<DetalleVenta> detallesVenta) {
+	public Factura(LocalDateTime fecha, double subtotal, double impuestos, double propina, ArrayList<DetalleVenta> detallesVenta) {
 		this.fecha = fecha;
 		this.subtotal = subtotal;
 		this.impuestos = impuestos;
@@ -35,7 +35,7 @@ public class Factura {
 		return propina;
 	}
 
-	public List<DetalleVenta> getDetallesDeLaVenta() {
+	public ArrayList<DetalleVenta> getDetallesDeLaVenta() {
 		return detallesDeLaVenta;
 	}
 
@@ -55,7 +55,7 @@ public class Factura {
 		this.propina = propina;
 	}
 
-	public void setDetallesDeLaVenta(List<DetalleVenta> detallesDeLaVenta) {
+	public void setDetallesDeLaVenta(ArrayList<DetalleVenta> detallesDeLaVenta) {
 		this.detallesDeLaVenta = detallesDeLaVenta;
 	}
 	

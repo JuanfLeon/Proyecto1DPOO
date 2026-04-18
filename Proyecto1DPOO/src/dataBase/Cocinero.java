@@ -1,30 +1,58 @@
 package dataBase;
 
 import java.util.ArrayList;
-import java.util.List;
-
 import cafe.Bebida;
 import cafe.Mesa;
 import cafe.Producto;
+import tiendaDeJuegos.JuegoDeMesa;
+import tiendaDeJuegos.TipoDeJuego;
 
 public class Cocinero extends Empleado{
 
 	
-	public Cocinero(String login, List<String> juegosFav, String contrasenia, List<Turno> turnos, String codigo_desc) {
+	public Cocinero(String login, ArrayList<String> juegosFav, String contrasenia, ArrayList<Turno> turnos, String codigo_desc) {
 		super(login, juegosFav, contrasenia, turnos, codigo_desc);
 	}
 	
-	public void despacharProducto(Mesa mesa, Producto producto) {
-		ArrayList<Producto> pp_mesa = mesa.getProductosOrdenados();
-		pp_mesa.add(producto);
-		mesa.setProductosOrdenados(pp_mesa);
+	public Producto despacharProducto(Mesa mesa, Producto producto) throws Exception{
+		
+		if (producto instanceof Bebida) {
+			if(((Bebida) producto).isAlcoholica()) {
+				if (mesa.isTieneNinos()) {
+					throw new Exception("HayNiniosEnLaMesa");
+				}
+				else {
+					return producto;
+				}
+			}
+			if(((Bebida) producto).isCaliente()) {
+				for(Object i:mesa.getProductosOrdenados()) {
+					if(i instanceof JuegoDeMesa && ((JuegoDeMesa) i).getTipoDeJuego() == TipoDeJuego.ACCION) {
+						throw new Exception("JuegoDeAccionEnLaMesa");
+					}
+				}
+			}
+			else {
+				return producto;
+			}
+		}
+		else {
+			return producto;
+		}
+		return producto;
 	}
 	
-	public boolean checkEdad() {
-		
+	public boolean checkEdad(Mesa mesa) {
+		if (mesa.isTieneNinos()) {
+			return true;
+		}
+		return false;
 	}
 	
-	public boolean checkBebidaCaliente() {
-		
+	public boolean checkBebidaCaliente(Mesa mesa) {
+		if (mesa.isTieneBebidaCaliente()) {
+			return true;
+		}
+		return false;
 	}
 }

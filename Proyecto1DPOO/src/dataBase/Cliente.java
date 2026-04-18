@@ -1,21 +1,21 @@
 package dataBase;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import cafe.Mesa;
 import tiendaDeJuegos.JuegoDeMesaFisico;
 
 public class Cliente extends Usuario{
 
-	public Cliente(String login, List<String> juegosFav, String contrasenia) {
+	public Cliente(String login, ArrayList<String> juegosFav, String contrasenia) {
 		super(login, juegosFav, contrasenia);
 	}
 
 	private String idCliente;
 	private double puntosFidelidad;
 	private Mesa mesa;
-	private List<JuegoDeMesaFisico> juegosPrestados;
-	private List<JuegoDeMesaFisico> juegosComprados;
+	private ArrayList<JuegoDeMesaFisico> juegosPrestados;
+	private ArrayList<JuegoDeMesaFisico> juegosComprados;
 	
 	public void actualizarPuntosFidelidad() {
 		
@@ -45,19 +45,19 @@ public class Cliente extends Usuario{
 		this.mesa = mesa;
 	}
 
-	public List<JuegoDeMesaFisico> getJuegosPrestados() {
+	public ArrayList<JuegoDeMesaFisico> getJuegosPrestados() {
 		return juegosPrestados;
 	}
 
-	public void setJuegosPrestados(List<JuegoDeMesaFisico> juegosPrestados) {
+	public void setJuegosPrestados(ArrayList<JuegoDeMesaFisico> juegosPrestados) {
 		this.juegosPrestados = juegosPrestados;
 	}
 
-	public List<JuegoDeMesaFisico> getJuegosComprados() {
+	public ArrayList<JuegoDeMesaFisico> getJuegosComprados() {
 		return juegosComprados;
 	}
 
-	public void setJuegosComprados(List<JuegoDeMesaFisico> juegosComprados) {
+	public void setJuegosComprados(ArrayList<JuegoDeMesaFisico> juegosComprados) {
 		this.juegosComprados = juegosComprados;
 	}
 	

@@ -69,54 +69,5 @@ public class DetalleVenta {
 	public void setTipoVenta(TipoVenta tipoVenta) {
 		this.tipoVenta = tipoVenta;
 	}
-	
-	public DetalleVenta(Producto producto, int cantidad, double subtotal, double impuestos, String tipoCompra) {
-		this.producto = producto;
-		this.cantidad = cantidad;
-		this.subtotal = subtotal;
-		this.impuestos = impuestos;
-		this.tipoCompra = tipoCompra;
-	}
-
-	public Producto getProducto() {
-		return producto;
-	}
-
-	public void setProducto(Producto producto) {
-		this.producto = producto;
-	}
-
-	public int getCantidad() {
-		return cantidad;
-	}
-
-	public void setCantidad(int cantidad) {
-		this.cantidad = cantidad;
-	}
-
-	public double getSubtotal() {
-		return subtotal;
-	}
-
-	public void setSubtotal(double subtotal) {
-		this.subtotal = subtotal;
-	}
-
-	public double getImpuestos() {
-		return impuestos;
-	}
-
-	public void setImpuestos(double impuestos) {
-		this.impuestos = impuestos;
-	}
-
-	public String getTipoCompra() {
-		return tipoCompra;
-	}
-
-	public void setTipoCompra(String tipoCompra) {
-		this.tipoCompra = tipoCompra;
-	}
-	
-	
+		
 }
