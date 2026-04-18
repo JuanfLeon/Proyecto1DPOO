@@ -1,25 +1,77 @@
 package dataBase;
 
-import java.time.LocalDateTime;
-import java.util.List;
+import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class Factura {
 
-	private LocalDateTime fecha;
+	private LocalDate fecha;
 	private double subtotal;
 	private double impuestos;
 	private double propina;
-	private List<DetalleVenta> detallesDeLaVenta;
+	private double descuento;
+	private double total;
+	public double getDescuento() {
+		return descuento;
+	}
+
+
+
+
+	public void setDescuento(double descuento) {
+		this.descuento = descuento;
+	}
+
+	private ArrayList<DetalleVenta> detallesDeLaVenta;
 	
-	public Factura(LocalDateTime fecha, double subtotal, double impuestos, double propina, List<DetalleVenta> detallesVenta) {
+	public Factura(LocalDate fecha, double subtotal, double impuestos, double propina, double descuento, double total,ArrayList<DetalleVenta> detallesVenta) {
 		this.fecha = fecha;
 		this.subtotal = subtotal;
 		this.impuestos = impuestos;
 		this.propina = propina;
+		
 		this.detallesDeLaVenta = detallesVenta;
 	}
 
-	public LocalDateTime getFecha() {
+	
+
+
+	public void setFecha(LocalDate fecha) {
+		this.fecha = fecha;
+	}
+
+
+
+
+	public void setSubtotal(double subtotal) {
+		this.subtotal = subtotal;
+	}
+
+
+
+
+	public void setImpuestos(double impuestos) {
+		this.impuestos = impuestos;
+	}
+
+
+
+
+	public void setPropina(double propina) {
+		this.propina = propina;
+	}
+
+
+
+
+	public void setDetallesDeLaVenta(ArrayList<DetalleVenta> detallesDeLaVenta) {
+		this.detallesDeLaVenta = detallesDeLaVenta;
+	}
+
+
+
+
+	public LocalDate getFecha() {
 		return fecha;
 	}
 
@@ -35,8 +87,22 @@ public class Factura {
 		return propina;
 	}
 
-	public List<DetalleVenta> getDetallesDeLaVenta() {
+	public ArrayList<DetalleVenta> getDetallesDeLaVenta() {
 		return detallesDeLaVenta;
+	}
+
+
+
+
+	public double getTotal() {
+		return total;
+	}
+
+
+
+
+	public void setTotal(double total) {
+		this.total = total;
 	}
 	
 }
