@@ -52,6 +52,6 @@ public class GestorVentaJuegos {
 			descuento=calc.calcularDescuento(subtotal, tieneDescuento);
 		}
 		double total= calcularTotalVenta(subtotal,impuestos,propina, descuento);
-		return new Factura(fecha, subtotal, impuestos, propina,descuento, total);
+		return new Factura(fecha, subtotal, impuestos, propina,descuento, total, detallesVenta); 
 	}
 }
