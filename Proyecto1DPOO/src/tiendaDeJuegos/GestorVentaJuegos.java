@@ -3,13 +3,13 @@ package tiendaDeJuegos;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import com.sun.org.apache.bcel.internal.generic.INSTANCEOF;
 
 import java.time.LocalDate;
 import calculadora.CalculadoraVentaJuegos;
 import dataBase.DetalleVenta;
 import dataBase.Empleado;
 import dataBase.Factura;
+import dataBase.Usuario;
 import exceptions.JuegoNoDisponibleException;
 
 public class GestorVentaJuegos {
@@ -34,7 +34,7 @@ public class GestorVentaJuegos {
 			return new DetalleVenta(juego,cantidad,subtotal,impuestos,TipoVenta.TIENDADEJUEGOS);
 		}
 	}
-	public Factura construirFactura(ArrayList<DetalleVenta> detallesVenta, double porcentajePropina,boolean tieneDescuento, Usuario cliente) {
+	public Factura construirFactura(ArrayList<DetalleVenta> detallesVenta, double porcentajePropina, boolean tieneDescuento, Usuario cliente) {
 		LocalDate fecha= LocalDate.now();
 		double subtotal= 0.0;
 		double impuestos= 0.0;

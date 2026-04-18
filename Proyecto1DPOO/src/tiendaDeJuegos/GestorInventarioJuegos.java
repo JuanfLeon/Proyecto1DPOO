@@ -45,7 +45,7 @@ public class GestorInventarioJuegos {
 	}
 
 	
-	public void comprarJuegos(String nombreJuego, Date fechaPublicacion,   int cantidad, String empresaProduccion,
+	public void comprarJuegos(String nombreJuego, double precio, Date fechaPublicacion,   int cantidad, String empresaProduccion,
 			TipoDeJuego tipoDeJuego, int minJugadores, int maxJugadores, int edadMinima, String caracteristicas,
 			boolean dificil) {
 		
@@ -53,7 +53,8 @@ public class GestorInventarioJuegos {
 		while (i<cantidad){		
 			String id=generadorID.generarIDJuego(nombreJuego);
 			JuegoDeMesaFisico juego= new JuegoDeMesaFisico( id, 
-															nombreJuego, 
+															nombreJuego,
+															precio,
 															fechaPublicacion,
 															empresaProduccion, 
 															tipoDeJuego, 

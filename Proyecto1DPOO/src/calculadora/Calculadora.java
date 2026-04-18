@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import cafe.Mesa;
 import cafe.Producto;
 import dataBase.Empleado;
+import dataBase.Usuario;
 import tiendaDeJuegos.JuegoDeMesa;
 
 public interface Calculadora {
@@ -18,9 +19,15 @@ public interface Calculadora {
 	public double calcularImpuestos(double subtotal);
 
 	
-	public default double calcularDescuento(Empleado empleado, double subtotal) {
+	public default double calcularDescuento(Usuario empleado, double subtotal) {
+		if (empleado instanceof Empleado) {
 		return subtotal*(descuentoEmpleados);
+		}
+		else {
+			return subtotal;
+		}
 	}
+	
 	public default double calcularDescuento(double subtotal, boolean tieneCodigo) {
 		if(tieneCodigo) {
 			return subtotal*(descuentoClientes);
