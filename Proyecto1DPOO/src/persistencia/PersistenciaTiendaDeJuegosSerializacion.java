@@ -11,7 +11,7 @@ public class PersistenciaTiendaDeJuegosSerializacion implements IPersistenciaTie
 		
 		File f = new File(archivo) ;
 		
-		if (f.exists()) {
+		if (!f.exists()) {
 			return new InventarioJuegos();}
 		
 		ObjectInputStream ios = null ;

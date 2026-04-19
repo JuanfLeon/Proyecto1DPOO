@@ -10,7 +10,7 @@ public class PersistenciaCafeSerializacion implements IPersistenciaCafe {
 		// TODO Auto-generated method stub
 		File f = new File(archivo) ;
 		
-		if (f.exists()) {
+		if (!f.exists()) {
 			return new Cafe(50, null, null);}
 		
 	ObjectInputStream ois = null ;

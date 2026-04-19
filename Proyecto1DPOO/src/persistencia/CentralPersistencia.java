@@ -12,7 +12,7 @@ public class CentralPersistencia {
 	 * @throws IllegalArgmentException si no se reconoce el tipo
 	 * @return IPersisteciaTiendaDeJuegos
 	 */
-	public IPersistenciaTiendaDeJuegos getPersistenciaTiendaDeJuegos(String tipo) {
+	public static IPersistenciaTiendaDeJuegos getPersistenciaTiendaDeJuegos(String tipo) {
 		if(BIN.equals(tipo)) {
 			return new PersistenciaTiendaDeJuegosSerializacion();
 			}
@@ -27,7 +27,7 @@ public class CentralPersistencia {
 	 * @return IPersistenciaCafe 
 	 * @throws IllegalArgumentException si no se reconoce el tipo
 	 */
-	public IPersistenciaCafe getPersistenciaCafe(String tipo) {
+	public static IPersistenciaCafe getPersistenciaCafe(String tipo) {
 		
 		if(BIN.equals(tipo)) {
 			return new PersistenciaCafeSerializacion();
@@ -41,7 +41,7 @@ public class CentralPersistencia {
 	 * @return IPersistenciaDataBase 
 	 * @throws IllegalArgumentException si no se reconoce el tipo
 	 */
-	public IPersistenciaDataBase getPersistenciaDataBaseSerializacion(String tipo) {
+	public static IPersistenciaDataBase getPersistenciaDataBaseSerializacion(String tipo) {
 		
 		if(BIN.equals(tipo)) {
 			return new PersistenciaDataBaseSerializacion();
