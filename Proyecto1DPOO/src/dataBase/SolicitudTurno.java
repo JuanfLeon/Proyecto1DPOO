@@ -3,6 +3,10 @@ package dataBase;
 public abstract class SolicitudTurno extends Solicitud{
 
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	protected Turno turnoInicial;
 	protected Turno turnoDeseado;
 	

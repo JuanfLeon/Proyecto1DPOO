@@ -1,9 +1,14 @@
 package dataBase;
 
+import java.io.Serializable;
 import java.time.LocalDateTime; //YYYY-MM-DDTHH:MM:SS
 
-public class Informe {
+public class Informe implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private double totalJuegos;
 	private double totalPlatillos;
 	private double subTotalJuegos;

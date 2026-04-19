@@ -1,10 +1,15 @@
 package dataBase;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class Factura {
+public class Factura implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private LocalDate fecha;
 	private double subtotal;
 	private double impuestos;

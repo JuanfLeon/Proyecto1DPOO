@@ -2,6 +2,10 @@ package dataBase;
 
 public class SolicitudIntercambioTurno extends SolicitudTurno{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Empleado empleadoIntercambiable;
 
 	public SolicitudIntercambioTurno(Turno turnoi, Turno turnod, Empleado solicitante, Empleado intercambiable) {

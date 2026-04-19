@@ -1,7 +1,13 @@
 package dataBase;
 
-public abstract class Solicitud {
+import java.io.Serializable;
 
+public abstract class Solicitud implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	protected Empleado solicitante;
 	
 	public Solicitud(Empleado emp_solic) {

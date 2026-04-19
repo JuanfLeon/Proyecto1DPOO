@@ -4,6 +4,10 @@ import cafe.Producto;
 
 public class SolicitudSugerenciaPlatillo extends Solicitud{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Producto platilloSugerido;
 	
 	public SolicitudSugerenciaPlatillo(Producto platilloSugerido, Empleado empleadoSolicitante) {

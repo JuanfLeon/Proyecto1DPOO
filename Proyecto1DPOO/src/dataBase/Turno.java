@@ -1,9 +1,14 @@
 package dataBase;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Turno {
+public class Turno implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private DiaSemana dia_turno;
 	private ArrayList<Mesero> meseros;
 	private ArrayList<Cocinero> cocineros;

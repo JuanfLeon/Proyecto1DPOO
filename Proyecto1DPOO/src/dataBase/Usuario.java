@@ -1,9 +1,11 @@
 package dataBase;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public abstract class Usuario {
+public abstract class Usuario implements Serializable{
 
+	private static final long serialVersionUID = 1L;
 	protected String login;
 	protected ArrayList<String> juegosFavoritos;
 	protected String contrasenia;

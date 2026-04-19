@@ -7,6 +7,11 @@ import tiendaDeJuegos.JuegoDeMesaFisico;
 
 public class Cliente extends Usuario{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public Cliente(String login, ArrayList<String> juegosFav, String contrasenia) {
 		super(login, juegosFav, contrasenia);
 	}

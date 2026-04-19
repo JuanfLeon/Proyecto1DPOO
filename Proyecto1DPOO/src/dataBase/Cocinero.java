@@ -10,6 +10,11 @@ import tiendaDeJuegos.TipoDeJuego;
 public class Cocinero extends Empleado{
 
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public Cocinero(String login, ArrayList<String> juegosFav, String contrasenia, ArrayList<Turno> turnos, String codigo_desc) {
 		super(login, juegosFav, contrasenia, turnos, codigo_desc);
 	}

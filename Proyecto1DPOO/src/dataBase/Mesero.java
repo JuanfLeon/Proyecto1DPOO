@@ -9,6 +9,10 @@ import tiendaDeJuegos.JuegoDeMesa;
 public class Mesero extends Empleado{
 
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private ArrayList<JuegoDeMesa> juegosDificiles;
 	
 	public Mesero(String login, ArrayList<String> juegosFav, String contrasenia, ArrayList<Turno> turnos, String codigo_desc, ArrayList<JuegoDeMesa> juegosDificiles) {

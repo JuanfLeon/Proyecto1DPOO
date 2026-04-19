@@ -1,6 +1,13 @@
 package dataBase;
 
-public class GestorSolicitudesTurno {
+import java.io.Serializable;
+
+public class GestorSolicitudesTurno implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	public void aceptarSolicitud(SolicitudTurno solicitud) throws Exception {
 		Turno t_ini = solicitud.getTurnoInicial();

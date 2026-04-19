@@ -2,11 +2,17 @@ package dataBase;
 
 
 
+import java.io.Serializable;
+
 import cafe.Producto;
 import tiendaDeJuegos.TipoVenta;
 
-public class DetalleVenta {
+public class DetalleVenta implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Producto producto;
 	private int cantidad;
 	private double subtotal;

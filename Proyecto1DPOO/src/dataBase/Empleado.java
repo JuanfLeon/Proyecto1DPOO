@@ -4,6 +4,10 @@ import java.util.ArrayList;
 
 public abstract class Empleado extends Usuario{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	protected ArrayList<Turno> turnoLaboral;
 	protected String codigoDescuento;
 	
