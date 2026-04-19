@@ -1,12 +1,14 @@
 package cafe;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import dataBase.Cliente;
 import dataBase.Empleado;
 
-public class Cafe {
+public class Cafe implements Serializable{
+	private static final long serialVersionUID = 1L ;
 
 	//Attributes
 	private int capacidadMaxClientes ;
