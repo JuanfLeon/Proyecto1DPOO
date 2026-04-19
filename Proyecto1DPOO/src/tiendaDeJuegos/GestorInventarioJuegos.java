@@ -1,4 +1,4 @@
-package tiendaDeJuegos;
+	package tiendaDeJuegos;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -6,6 +6,7 @@ import java.util.Iterator;
 import java.util.Date;
 
 import exceptions.EstadoInvalidoException;
+import exceptions.InventarioInsuficienteException;
 import exceptions.JuegoNoDisponibleException;
 import generals.generadorID;
 
@@ -86,5 +87,14 @@ public class GestorInventarioJuegos {
 			e.getMessage();
 		}
 		
+	}
+	
+	public void moverJuegoDeVentasAPrestamo(String nombreJuego) throws InventarioInsuficienteException, JuegoNoDisponibleException {
+		if (!inventarioJuegos.validarDisponibilidadJuegos(nombreJuego, 1, TipoInventario.VENTAS)) {
+			throw new InventarioInsuficienteException(nombreJuego);
+		}
+		else {
+			inventarioJuegos.agregarJuegoInventario(inventarioJuegos.eliminarPrimerJuego(nombreJuego, TipoInventario.VENTAS), nombreJuego, TipoInventario.PRESTAMO);
+		}
 	}
 }

@@ -1,6 +1,7 @@
 package dataBase;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class DataBase implements Serializable{
@@ -61,5 +62,11 @@ public class DataBase implements Serializable{
 		this.solicitudes = solicitudes;
 	}
 	
-	
+	///
+	/// 
+	/// 
+	public Informe generarInforme(double totalJuegos, double totalPlatillos, double subTotalJuegos, double subTotalPlatillos, double totalImpuestos, double totalPropinas, double totalCosto, LocalDateTime fechaInicio, LocalDateTime fechaFin) {
+		return new Informe(totalJuegos, totalPlatillos, subTotalJuegos, subTotalPlatillos, totalImpuestos, totalPropinas, totalCosto, fechaInicio, fechaFin);
+	}
+	 
 }
