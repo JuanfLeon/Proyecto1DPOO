@@ -2,4 +2,51 @@ package persistencia;
 
 public class CentralPersistencia {
 
+	public static final String BIN = "Bin" ;
+	
+	private CentralPersistencia() {}
+	
+	/**
+	 * Esto debería retornar la implementacion de persistencia para TDJ.
+	 * @param tipo
+	 * @throws IllegalArgmentException si no se reconoce el tipo
+	 * @return IPersisteciaTiendaDeJuegos
+	 */
+	public IPersistenciaTiendaDeJuegos getPersistenciaTiendaDeJuegos(String tipo) {
+		if(BIN.equals(tipo)) {
+			return new PersistenciaTiendaDeJuegosSerializacion();
+			}
+		
+		throw new IllegalArgumentException ("El tipo de persistencia no es reconocido " + tipo);
+		
+	}
+
+	/**
+	 * Esto debería retornar la implementacion de persistencia de Cafe.
+	 * @param tipo
+	 * @return IPersistenciaCafe 
+	 * @throws IllegalArgumentException si no se reconoce el tipo
+	 */
+	public IPersistenciaCafe getPersistenciaCafe(String tipo) {
+		
+		if(BIN.equals(tipo)) {
+			return new PersistenciaCafeSerializacion();
+		}
+		throw new IllegalArgumentException ("El tipo de persistencia no es reconocido " + tipo);
+	}
+	
+	/**
+	 * Esto debería retornar la implementacion de persistencia de DataBase.
+	 * @param tipo
+	 * @return IPersistenciaDataBase 
+	 * @throws IllegalArgumentException si no se reconoce el tipo
+	 */
+	public IPersistenciaDataBase getPersistenciaDataBaseSerializacion(String tipo) {
+		
+		if(BIN.equals(tipo)) {
+			return new PersistenciaDataBaseSerializacion();
+		}
+		throw new IllegalArgumentException ("El tipo de persistencia no es reconocido " + tipo);
+	}
+	
 }
