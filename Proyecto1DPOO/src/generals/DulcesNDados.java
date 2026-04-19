@@ -17,7 +17,9 @@ public class DulcesNDados {
 		this.dataBase = new DataBase();
 	}
 	
-	
+	public static void main(String[] args) {
+		
+	}
 	
 	
 }
