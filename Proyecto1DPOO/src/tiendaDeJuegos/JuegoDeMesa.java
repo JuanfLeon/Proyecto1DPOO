@@ -1,10 +1,12 @@
 package tiendaDeJuegos;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import cafe.Producto;
 
-public class JuegoDeMesa extends Producto{
+public class JuegoDeMesa extends Producto implements Serializable{
+	private static final long serialVersionUID = 1L ;
 	protected String idJuego;
 	protected Date anoPublicacion;
 	protected String empresaProduccion;

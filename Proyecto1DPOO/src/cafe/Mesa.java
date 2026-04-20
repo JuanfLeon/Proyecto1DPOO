@@ -1,11 +1,13 @@
 package cafe;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import dataBase.Cliente;
 
-public class Mesa {
+public class Mesa implements Serializable{
 
+	private static final long serialVersionUID = 1L;
 	//Attributes 
 	private String idMesa;
 	private int cantidadClientes ;

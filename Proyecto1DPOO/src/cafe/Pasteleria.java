@@ -1,9 +1,10 @@
 package cafe;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Pasteleria extends Producto {
-
+public class Pasteleria extends Producto implements Serializable{
+	private static final long serialVersionUID = 1L ;
 	//Attributes 
 	private List<String> alergenos ;
 

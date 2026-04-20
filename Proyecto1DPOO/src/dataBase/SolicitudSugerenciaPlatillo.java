@@ -1,8 +1,10 @@
 package dataBase;
 
+import java.io.Serializable;
+
 import cafe.Producto;
 
-public class SolicitudSugerenciaPlatillo extends Solicitud{
+public class SolicitudSugerenciaPlatillo extends Solicitud implements Serializable{
 
 	/**
 	 * 

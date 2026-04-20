@@ -1,3 +1,6 @@
 package dataBase;
 
-public enum DiaSemana {LUNES, MARTES, MIERCOLES, JUEVES, VIERNES, SABADO, DOMINGO};
+import java.io.Serializable;
+
+public enum DiaSemana implements Serializable
+	{LUNES, MARTES, MIERCOLES, JUEVES, VIERNES, SABADO, DOMINGO};

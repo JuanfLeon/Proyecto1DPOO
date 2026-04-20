@@ -1,11 +1,12 @@
 package dataBase;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import cafe.Mesa;
 import tiendaDeJuegos.JuegoDeMesaFisico;
 
-public class Cliente extends Usuario{
+public class Cliente extends Usuario implements Serializable{
 
 	/**
 	 * 

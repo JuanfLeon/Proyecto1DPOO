@@ -8,6 +8,7 @@ import dataBase.Cliente;
 import dataBase.Empleado;
 
 public class Cafe implements Serializable{
+	
 	private static final long serialVersionUID = 1L ;
 
 	//Attributes

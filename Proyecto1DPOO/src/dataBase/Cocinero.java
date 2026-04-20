@@ -1,5 +1,6 @@
 package dataBase;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import cafe.Bebida;
 import cafe.Mesa;
@@ -7,7 +8,7 @@ import cafe.Producto;
 import tiendaDeJuegos.JuegoDeMesa;
 import tiendaDeJuegos.TipoDeJuego;
 
-public class Cocinero extends Empleado{
+public class Cocinero extends Empleado implements Serializable{
 
 	
 	/**

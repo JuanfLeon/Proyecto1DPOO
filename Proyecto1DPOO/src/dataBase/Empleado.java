@@ -1,9 +1,10 @@
 package dataBase;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public abstract class Empleado extends Usuario{
-
+public abstract class Empleado extends Usuario implements Serializable{
+	
 	/**
 	 * 
 	 */

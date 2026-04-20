@@ -1,5 +1,6 @@
 	package tiendaDeJuegos;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -10,7 +11,8 @@ import exceptions.InventarioInsuficienteException;
 import exceptions.JuegoNoDisponibleException;
 import generals.generadorID;
 
-public class GestorInventarioJuegos {
+public class GestorInventarioJuegos implements Serializable{
+	private static final long serialVersionUID = 1L ;
 	private InventarioJuegos inventarioJuegos;
 
 	//Getters y Setters

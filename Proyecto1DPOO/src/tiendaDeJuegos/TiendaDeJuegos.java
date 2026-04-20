@@ -1,5 +1,6 @@
 package tiendaDeJuegos;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -10,7 +11,8 @@ import dataBase.Factura;
 import dataBase.Usuario;
 import exceptions.JuegoNoDisponibleException;
 
-public class TiendaDeJuegos {
+public class TiendaDeJuegos implements Serializable{
+	private static final long serialVersionUID = 1L ;
 	
 	private InventarioJuegos inventarioJuegos;
 	private GestorVentaJuegos gestorVentaJuegos;

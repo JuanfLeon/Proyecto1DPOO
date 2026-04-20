@@ -1,6 +1,8 @@
 package dataBase;
 
-public abstract class SolicitudTurno extends Solicitud{
+import java.io.Serializable;
+
+public abstract class SolicitudTurno extends Solicitud implements Serializable{
 
 
 	/**

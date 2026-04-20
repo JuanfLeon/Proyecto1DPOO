@@ -1,8 +1,10 @@
 package tiendaDeJuegos;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Prestamo {
+public class Prestamo implements Serializable{
+	private static final long serialVersionUID = 1L ;
 	private String idJuego;
 	private String idMesa;
 	private LocalDate fechaInicio;

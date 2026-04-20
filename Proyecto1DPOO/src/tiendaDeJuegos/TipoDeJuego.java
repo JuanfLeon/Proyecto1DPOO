@@ -1,5 +1,8 @@
 package tiendaDeJuegos;
 
-public enum TipoDeJuego {
+import java.io.Serializable;
+
+public enum TipoDeJuego implements Serializable{
+	
 	CARTAS, TABLERO, ACCION
 }

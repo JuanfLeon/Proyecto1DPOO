@@ -1,11 +1,13 @@
 package tiendaDeJuegos;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import exceptions.EstadoInvalidoException;
 import exceptions.JuegoNoDisponibleException;
 
-public class InventarioJuegos {
+public class InventarioJuegos implements Serializable{
+	private static final long serialVersionUID = 1L ;
 	private HashMap<String,ArrayList<JuegoDeMesaFisico>> inventarioPrestamo;
 	private HashMap<String,ArrayList<JuegoDeMesaFisico>> inventarioVenta;
 	private HashMap<String, JuegoDeMesa> catalogoJuegos;

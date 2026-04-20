@@ -1,8 +1,10 @@
 package tiendaDeJuegos;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class JuegoDeMesaFisico extends JuegoDeMesa{
+public class JuegoDeMesaFisico extends JuegoDeMesa implements Serializable{
+	private static final long serialVersionUID = 1L ;
 	private String estadoDelJuego;
 	private boolean prestado;
 	

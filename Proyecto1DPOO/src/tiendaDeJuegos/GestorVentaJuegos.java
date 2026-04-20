@@ -2,8 +2,7 @@ package tiendaDeJuegos;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-
-
+import java.io.Serializable;
 import java.time.LocalDate;
 import calculadora.CalculadoraVentaJuegos;
 import dataBase.DetalleVenta;
@@ -12,7 +11,8 @@ import dataBase.Factura;
 import dataBase.Usuario;
 import exceptions.JuegoNoDisponibleException;
 
-public class GestorVentaJuegos {
+public class GestorVentaJuegos implements Serializable{
+	private static final long serialVersionUID = 1L ;
 	private CalculadoraVentaJuegos calc;
 	
 	public double calcularTotalVenta (double subtotal, double impuestos, double propina, double descuento) {
