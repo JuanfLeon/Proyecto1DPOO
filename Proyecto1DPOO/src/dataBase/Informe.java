@@ -1,7 +1,7 @@
 package dataBase;
 
 import java.io.Serializable;
-import java.time.LocalDateTime; //YYYY-MM-DDTHH:MM:SS
+import java.time.LocalDate; //YYYY-MM-DD
 
 public class Informe implements Serializable{
 
@@ -16,10 +16,10 @@ public class Informe implements Serializable{
 	private double totalImpuestos;
 	private double totalPropinas;
 	private double totalCosto;
-	private LocalDateTime fechaInicio;
-	private LocalDateTime fechaFin;
+	private LocalDate fechaInicio;
+	private LocalDate fechaFin;
 	
-	public Informe(double totalJuegos, double totalPlatillos, double subTotalJuegos, double subTotalPlatillos, double totalImpuestos, double totalPropinas, double totalCosto, LocalDateTime fechaInicio, LocalDateTime fechaFin) {
+	public Informe(double totalJuegos, double totalPlatillos, double subTotalJuegos, double subTotalPlatillos, double totalImpuestos, double totalPropinas, double totalCosto, LocalDate fechaInicio, LocalDate fechaFin) {
 		
 		this.totalJuegos = totalJuegos;
 		this.totalPlatillos = totalPlatillos;
@@ -53,10 +53,10 @@ public class Informe implements Serializable{
 	public double getTotalCosto() {
 		return totalCosto;
 	}
-	public LocalDateTime getFechaInicio() {
+	public LocalDate getFechaInicio() {
 		return fechaInicio;
 	}
-	public LocalDateTime getFechaFin() {
+	public LocalDate getFechaFin() {
 		return fechaFin;
 	}
 
@@ -88,11 +88,11 @@ public class Informe implements Serializable{
 		this.totalCosto = totalCosto;
 	}
 
-	public void setFechaInicio(LocalDateTime fechaInicio) {
+	public void setFechaInicio(LocalDate fechaInicio) {
 		this.fechaInicio = fechaInicio;
 	}
 
-	public void setFechaFin(LocalDateTime fechaFin) {
+	public void setFechaFin(LocalDate fechaFin) {
 		this.fechaFin = fechaFin;
 	}
 	
