@@ -4,7 +4,7 @@ public class CentralPersistencia {
 
 	public static final String BIN = "Bin" ;
 	
-	private CentralPersistencia() {}
+	public CentralPersistencia() {}
 	
 	/**
 	 * Esto debería retornar la implementacion de persistencia para TDJ.
