@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import cafe.Bebida;
 import cafe.Pasteleria;
 import tiendaDeJuegos.JuegoDeMesa;
+import torneo.Torneo;
 
 public class DataBase implements Serializable{
 
@@ -16,13 +17,15 @@ public class DataBase implements Serializable{
 	private ArrayList<Usuario> usuarios;
 	private Turno[] turnos;
 	private ArrayList<Solicitud> solicitudes;
-	
-	public DataBase(ArrayList<Informe> informes, ArrayList<Factura> facturas, ArrayList<Usuario> usuarios, ArrayList<Solicitud> solicitudes) {
+	private ArrayList<Torneo> torneos;
+
+	public DataBase(ArrayList<Informe> informes, ArrayList<Factura> facturas, ArrayList<Usuario> usuarios, ArrayList<Solicitud> solicitudes, ArrayList<Torneo> torneos) {
 		this.informes = informes;
 		this.facturas = facturas;
 		this.usuarios = usuarios;
 		this.turnos = new Turno[7];
 		this.solicitudes = solicitudes;
+		this.torneos= torneos;
 	}
 	
 	
@@ -65,6 +68,16 @@ public class DataBase implements Serializable{
 	public void setSolicitudes(ArrayList<Solicitud> solicitudes) {
 		this.solicitudes = solicitudes;
 	}
+	
+	public ArrayList<Torneo> getTorneos() {
+		return torneos;
+	}
+
+
+	public void setTorneos(ArrayList<Torneo> torneos) {
+		this.torneos = torneos;
+	}
+
 	
 	///
 	/// 

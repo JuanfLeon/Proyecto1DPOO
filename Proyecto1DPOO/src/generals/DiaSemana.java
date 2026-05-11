@@ -1,4 +1,4 @@
-package dataBase;
+package generals;
 
 import java.io.Serializable;
 

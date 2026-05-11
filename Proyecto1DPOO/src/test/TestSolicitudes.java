@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 
 import dataBase.*;
+import generals.DiaSemana;
 
 @DisplayName("Tests — Solicitudes de turno y sugerencias de platillo")
 public class TestSolicitudes {

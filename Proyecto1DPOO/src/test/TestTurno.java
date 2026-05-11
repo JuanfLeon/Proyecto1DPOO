@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 
 import dataBase.*;
+import generals.DiaSemana;
 
 @DisplayName("Tests — Turno (validaciones de cobertura minima)")
 public class TestTurno {

@@ -3,6 +3,8 @@ package dataBase;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import generals.DiaSemana;
+
 public class Turno implements Serializable{
 
 	/**
