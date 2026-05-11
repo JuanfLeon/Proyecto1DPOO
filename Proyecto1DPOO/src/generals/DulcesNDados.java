@@ -1,9 +1,17 @@
 package generals;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 import cafe.Cafe;
+import consola.ConsolaUtils;
+import consola.MainAdmin;
+import consola.MainCliente;
+import consola.MainEmpleado;
 import dataBase.DataBase;
+import dataBase.Turno;
 import persistencia.CentralPersistencia;
 import persistencia.IPersistenciaCafe;
 import persistencia.IPersistenciaDataBase;
@@ -13,26 +21,154 @@ import tiendaDeJuegos.InventarioJuegos;
 public class DulcesNDados {
 
 	private Cafe cafe;
-	private InventarioJuegos tiendaDeJuegos;
-	private DataBase dataBase;
-	private CentralPersistencia centralPersistencia;
-	
-	
-	
-		
-		
-	public DulcesNDados(Cafe cafe, InventarioJuegos tiendaDeJuegos, DataBase dataBase) {
-		this.cafe = cafe;
-		this.tiendaDeJuegos = tiendaDeJuegos;
-		this.dataBase = dataBase;
-		this.centralPersistencia= new CentralPersistencia();
-	}
+    private InventarioJuegos tiendaDeJuegos;
+    private DataBase dataBase;
+    private CentralPersistencia centralPersistencia;
 
+    // =====================================================
+    // CONSTRUCTOR
+    // =====================================================
 
-	
-	//METODO MAIN POR INSTRUCCIONES DEL PROFESOR NO IMPLEMENTADO
-	public static void main(String[] args) {
-	}
+    public DulcesNDados() {
+
+        this.centralPersistencia =
+            new CentralPersistencia();
+
+        // Objetos por defecto
+        // (se reemplazan al cargar serialización)
+
+        this.cafe = new Cafe(
+            50,
+            new ArrayList<>(),
+            new ArrayList<>()
+        );
+
+        this.dataBase = new DataBase(
+            new ArrayList<>(),
+            new ArrayList<>(),
+            new ArrayList<>(),
+            new ArrayList<>(),
+            new ArrayList<>()
+        );
+
+        this.tiendaDeJuegos =
+            new InventarioJuegos();
+    }
+
+    // =====================================================
+    // MAIN
+    // =====================================================
+
+    public static void main(String[] args) {
+
+        // Crear carpeta datos
+        new File("datos").mkdirs();
+
+        DulcesNDados app =
+            new DulcesNDados();
+
+        // =========================================
+        // CARGAR DATOS SERIALIZADOS
+        // =========================================
+
+        app.cargarDatosDataBase(
+            "datos/dataBase.bin"
+        );
+
+        app.cargarDatosCafe(
+            "datos/cafe.bin"
+        );
+
+        app.cargarDatosTienda(
+            "datos/tiendaDeJuegos.bin"
+        );
+
+        // =========================================
+        // SISTEMA
+        // =========================================
+
+        boolean salir = false;
+
+        while (!salir) {
+
+            System.out.println(
+                "\n=== DULCES N' DADOS ==="
+            );
+
+            System.out.println(
+                "1. Administrador"
+            );
+
+            System.out.println(
+                "2. Empleado"
+            );
+
+            System.out.println(
+                "3. Cliente"
+            );
+
+            System.out.println(
+                "0. Salir"
+            );
+
+            String opcion =
+                ConsolaUtils.leerString(
+                    "Seleccione una opción: "
+                );
+
+            switch (opcion) {
+
+                case "1":
+
+                    MainAdmin.ejecutar(app);
+                    break;
+
+                case "2":
+
+                    MainEmpleado.ejecutar(app);
+                    break;
+
+                case "3":
+
+                    MainCliente.ejecutar(app);
+                    break;
+
+                case "0":
+
+                    salir = true;
+                    break;
+
+                default:
+
+                    System.out.println(
+                        "Opción inválida."
+                    );
+            }
+        }
+
+        // =========================================
+        // GUARDAR DATOS
+        // =========================================
+
+        app.guardarDatosDataBase(
+            "datos/dataBase.bin",
+            app.getDataBase()
+        );
+
+        app.guardarDatosCafe(
+            "datos/cafe.bin",
+            app.getCafe()
+        );
+
+        app.guardarDatosTiendaDeJuegos(
+            "datos/tiendaDeJuegos.bin",
+            app.getTiendaDeJuegos()
+        );
+
+        System.out.println(
+            "Datos guardados correctamente."
+        );
+    }
 	
 	
 	//Getters y Setters

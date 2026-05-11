@@ -11,7 +11,7 @@ public class PersistenciaDataBaseSerializacion implements IPersistenciaDataBase 
 		File f = new File(archivo);
 		
 		if (!f.exists()) {
-			return new DataBase(null, null, null, null);
+			return new DataBase(null, null, null, null, null);
 		}
 		
 		ObjectInputStream ois = null ;
