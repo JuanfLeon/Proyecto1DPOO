@@ -28,5 +28,11 @@ public class Producto implements Serializable{
 	public void setPrecio(double precio) {
 		this.precio = precio;
 	}
-	
+	@Override
+	public String toString() {
+
+	    return nombre
+	        + " | Precio: $"
+	        + precio;
+	}
 }

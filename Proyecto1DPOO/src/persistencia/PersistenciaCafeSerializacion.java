@@ -1,6 +1,8 @@
 package persistencia;
 
 import java.io.*;
+import java.util.ArrayList;
+
 import cafe.Cafe;
 
 public class PersistenciaCafeSerializacion implements IPersistenciaCafe {
@@ -11,7 +13,7 @@ public class PersistenciaCafeSerializacion implements IPersistenciaCafe {
 		File f = new File(archivo) ;
 		
 		if (!f.exists()) {
-			return new Cafe(50, null, null);}
+			return new Cafe(50, new ArrayList<>(), new ArrayList<>());}
 		
 	ObjectInputStream ois = null ;
 	try {

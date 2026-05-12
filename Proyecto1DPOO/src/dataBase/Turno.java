@@ -117,6 +117,15 @@ public class Turno implements Serializable{
 	public void setCocineros(ArrayList<Cocinero> cocineros) {
 		this.cocineros = cocineros;
 	}
-	
+	@Override
+	public String toString() {
+
+	    return "Turno: "
+	        + dia_turno
+	        + " | Meseros: "
+	        + meseros.size()
+	        + " | Cocineros: "
+	        + cocineros.size();
+	}
 	
 }

@@ -40,5 +40,12 @@ public abstract class Usuario implements Serializable{
 		this.contrasenia = contrasenia;
 	}
 	
-	
+
+	@Override
+	public String toString() {
+
+	    return getClass().getSimpleName()
+	        + " | Login: "
+	        + login;
+	}
 }

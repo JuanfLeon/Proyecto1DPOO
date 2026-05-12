@@ -22,5 +22,11 @@ public abstract class Solicitud implements Serializable{
 	public void setSolicitante(Empleado solicitante) {
 		this.solicitante = solicitante;
 	}
-	
+	@Override
+	public String toString() {
+
+	    return getClass().getSimpleName()
+	        + " | Empleado Solicitante: "
+	        + solicitante;
+	}
 }

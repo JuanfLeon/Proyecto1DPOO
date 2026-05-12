@@ -96,5 +96,14 @@ public class Informe implements Serializable{
 		this.fechaFin = fechaFin;
 	}
 	
-	
+	@Override
+	public String toString() {
+
+	    return "Informe desde "
+	        + fechaInicio
+	        + " hasta "
+	        + fechaFin
+	        + " | Total: $"
+	        + totalCosto;
+	}
 }

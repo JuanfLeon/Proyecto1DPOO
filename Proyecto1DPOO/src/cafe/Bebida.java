@@ -33,5 +33,18 @@ public class Bebida extends Producto implements Serializable{
 		this.caliente = caliente;
 	}
 		
+	
+	@Override
+	public String toString() {
+
+	    return "Bebida: "
+	        + getNombre()
+	        + " | Precio: $"
+	        + getPrecio()
+	        + " | Alcoholica: "
+	        + alcoholica
+	        + " | Caliente: "
+	        + caliente;
+	}
 }
 

@@ -19,7 +19,7 @@ public class SerializacionTest {
     @Test
     void testGuardarObjeto() throws Exception {
 
-        DataBase db = new DataBase(null, null, null, null);
+        DataBase db = new DataBase(null, null, null, null, null);
 
         FileOutputStream fos = new FileOutputStream(RUTA);
         ObjectOutputStream oos = new ObjectOutputStream(fos);
@@ -36,7 +36,7 @@ public class SerializacionTest {
     @Test
     void testGuardarYCargarObjeto() throws Exception {
 
-        DataBase dbOriginal = new DataBase(null, null, null, null);
+        DataBase dbOriginal = new DataBase(null, null, null, null, null);
 
         // Guardar
         ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(RUTA));
@@ -57,8 +57,8 @@ public class SerializacionTest {
     @Test
     void testSobrescribirArchivo() throws Exception {
 
-        DataBase db1 = new DataBase(null, null, null, null);
-        DataBase db2 = new DataBase(null, null, null, null);
+        DataBase db1 = new DataBase(null, null, null, null, null);
+        DataBase db2 = new DataBase(null, null, null, null, null);
 
         // Guardar primero
         ObjectOutputStream oos1 = new ObjectOutputStream(new FileOutputStream(RUTA));

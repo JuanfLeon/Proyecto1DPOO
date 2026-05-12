@@ -74,5 +74,14 @@ public class Mesa implements Serializable{
 		this.clienteTitular = clienteTitular;
 	} 
 	
-	
+	@Override
+	public String toString() {
+
+	    return "Mesa "
+	        + idMesa
+	        + " | Personas: "
+	        + cantidadClientes
+	        + " | Niños: "
+	        + tieneNinos;
+	}
 }

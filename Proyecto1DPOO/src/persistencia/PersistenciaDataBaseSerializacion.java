@@ -1,6 +1,8 @@
 package persistencia;
 
 import java.io.*;
+import java.util.ArrayList;
+
 import dataBase.DataBase;
 
 public class PersistenciaDataBaseSerializacion implements IPersistenciaDataBase {
@@ -11,7 +13,7 @@ public class PersistenciaDataBaseSerializacion implements IPersistenciaDataBase 
 		File f = new File(archivo);
 		
 		if (!f.exists()) {
-			return new DataBase(null, null, null, null);
+			return new DataBase(new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
 		}
 		
 		ObjectInputStream ois = null ;

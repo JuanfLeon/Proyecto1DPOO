@@ -41,6 +41,13 @@ public class Prestamo implements Serializable{
 		this.fechaFin = tiempoLimite;
 	}
 	
+	@Override
+	public String toString() {
 
+	    return "Prestamo | Juego: "
+	        + idJuego
+	        + " | Mesa: "
+	        + idMesa;
+	}
 
 }
