@@ -22,5 +22,14 @@ public class Pasteleria extends Producto implements Serializable{
 	public void setAlergenos(List<String> alergenos) {
 		this.alergenos = alergenos;
 	}
-	
+	@Override
+	public String toString() {
+
+	    return "Pastelería: "
+	        + getNombre()
+	        + " | Precio: $"
+	        + getPrecio()
+	        + " | Alérgenos: "
+	        + alergenos;
+	}
 }

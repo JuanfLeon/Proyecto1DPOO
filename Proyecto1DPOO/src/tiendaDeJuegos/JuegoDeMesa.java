@@ -112,4 +112,18 @@ public class JuegoDeMesa extends Producto implements Serializable{
 		this.dificil = dificil;
 	}
 	
+	@Override
+	public String toString() {
+
+	    return nombre
+	        + " | "
+	        + tipoDeJuego
+	        + " | "
+	        + minJugadores
+	        + "-"
+	        + maxJugadores
+	        + " jugadores"
+	        + " | Edad mínima: "
+	        + edadMinima;
+	}
 }

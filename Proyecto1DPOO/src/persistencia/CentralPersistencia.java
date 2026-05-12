@@ -2,7 +2,7 @@ package persistencia;
 
 public class CentralPersistencia {
 
-	public static final String BIN = "Bin" ;
+	public static final String BIN = "BIN" ;
 	
 	public CentralPersistencia() {}
 	

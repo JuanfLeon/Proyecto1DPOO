@@ -1,7 +1,13 @@
 package consola;
 
+import java.util.ArrayList;
+
 import cafe.Cafe;
+import dataBase.Cocinero;
 import dataBase.DataBase;
+import dataBase.Empleado;
+import dataBase.Mesero;
+import dataBase.Usuario;
 import generals.DulcesNDados;
 import tiendaDeJuegos.InventarioJuegos;
 
@@ -288,17 +294,60 @@ public class MainAdmin {
     // EMPLEADOS
     // =====================================================
 
-    static void registrarEmpleado(
-        DataBase db,
-        Cafe cafe
-    ) {
+    static void registrarEmpleado(DataBase db, Cafe cafe) {
+    	 System.out.println("\n=== REGISTRAR EMPLEADO ===");
 
+    		    String login = ConsolaUtils.leerString( "Login: ");
+
+    		    String contrasenia = ConsolaUtils.leerString("Contraseña: ");
+
+    		    String codigoDescuento = ConsolaUtils.leerString("Código descuento: " );
+
+    		    int tipo = ConsolaUtils.leerEntero("Tipo (1 = Mesero, 2 = Cocinero): ",1,2);
+
+    		    Empleado nuevoEmpleado;
+
+    		    if (tipo == 1) {
+
+    		        nuevoEmpleado =
+    		            new Mesero(
+    		                login,
+    		                new ArrayList<>(),
+    		                contrasenia,
+    		                new ArrayList<>(),
+    		                codigoDescuento,
+    		                new ArrayList<>()
+    		            );
+    		    }
+
+    		    else {
+
+    		        nuevoEmpleado =
+    		            new Cocinero(
+    		                login,
+    		                new ArrayList<>(),
+    		                contrasenia,
+    		                new ArrayList<>(),
+    		                codigoDescuento
+    		            );
+    		    }
+
+    		    db.getUsuarios().add(
+    		        nuevoEmpleado
+    		    );
+
+    		    cafe.getEmpleados().add(
+    		        nuevoEmpleado
+    		    );
+
+    		    System.out.println(
+    		        "Empleado registrado correctamente."
+    		    );
+    	
     }
 
-    static void verEmpleados(
-        Cafe cafe
-    ) {
-
+    static void verEmpleados(Cafe cafe) {
+    	System.out.print(cafe.getEmpleados());
     }
 
     // =====================================================

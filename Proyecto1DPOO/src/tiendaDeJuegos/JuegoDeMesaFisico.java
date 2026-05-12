@@ -40,5 +40,13 @@ public class JuegoDeMesaFisico extends JuegoDeMesa implements Serializable{
 		this.estadoDelJuego = estadoDelJuego;
 		this.prestado = prestado;
 	}
-	
+	@Override
+	public String toString() {
+
+	    return getNombre()
+	        + " | Estado: "
+	        + estadoDelJuego
+	        + " | Prestado: "
+	        + prestado;
+	}
 }

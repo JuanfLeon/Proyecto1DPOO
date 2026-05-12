@@ -67,5 +67,12 @@ public class Cliente extends Usuario implements Serializable{
 		this.juegosComprados = juegosComprados;
 	}
 	
-	
+	@Override
+	public String toString() {
+
+	    return "Cliente | Login: "
+	        + getLogin()
+	        + " | Puntos fidelidad: "
+	        + puntosFidelidad;
+	}
 }

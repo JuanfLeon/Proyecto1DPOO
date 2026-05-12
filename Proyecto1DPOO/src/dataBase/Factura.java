@@ -109,5 +109,12 @@ public class Factura implements Serializable{
 	public void setTotal(double total) {
 		this.total = total;
 	}
-	
+	@Override
+	public String toString() {
+
+	    return "Factura | Fecha: "
+	        + fecha
+	        + " | Total: $"
+	        + total;
+	}
 }

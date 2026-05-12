@@ -56,5 +56,13 @@ public abstract class Empleado extends Usuario implements Serializable{
 		this.codigoDescuento = codigoDescuento;
 	}
 	    
-	   
+	@Override
+	public String toString() {
+
+	    return getClass().getSimpleName()
+	        + " | Login: "
+	        + getLogin()
+	        + " | Código descuento: "
+	        + codigoDescuento;
+	}
 }
