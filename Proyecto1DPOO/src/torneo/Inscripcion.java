@@ -3,18 +3,17 @@ package torneo;
 import java.util.ArrayList;
 
 import dataBase.Usuario;
-import exceptions.EntidadNoEncontradaException;
+
 import exceptions.RestriccionJugadoresException;
 
 public class Inscripcion {
 	private ArrayList<Usuario> usuariosInscripcion;
 	
-	
-	public Inscripcion buscarUsuario(Usuario usuario) throws EntidadNoEncontradaException {
-		if (!usuariosInscripcion.contains(usuario)) {
-			throw new EntidadNoEncontradaException(usuario.toString());
+	public boolean contieneUsuario(Usuario usuario){
+		if (usuariosInscripcion.contains(usuario)) {
+			return true;
 		}
-		return this;
+		return false;
 	}
 	
 	public Inscripcion(ArrayList<Usuario> usuariosInscripcion) throws RestriccionJugadoresException{
@@ -23,4 +22,13 @@ public class Inscripcion {
 		}
 		this.usuariosInscripcion=usuariosInscripcion;
 	}
+
+	public ArrayList<Usuario> getUsuariosInscripcion() {
+		return usuariosInscripcion;
+	}
+
+	public void setUsuariosInscripcion(ArrayList<Usuario> usuariosInscripcion) {
+		this.usuariosInscripcion = usuariosInscripcion;
+	}
+	
 }
