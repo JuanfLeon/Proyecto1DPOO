@@ -1,5 +1,8 @@
 package consola;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
 
 public class ConsolaUtils {
@@ -48,6 +51,34 @@ public class ConsolaUtils {
             if (r.equals("s")) return true;
             if (r.equals("n")) return false;
             System.out.println("Responda s o n.");
+        }
+    }
+    
+    public static Date leerFecha(String mensaje) {
+
+        while(true) {
+
+            try {
+
+                System.out.print(mensaje);
+
+                String fechaTexto = sc.nextLine();
+
+                SimpleDateFormat formato =
+                    new SimpleDateFormat("dd/MM/yyyy");
+
+                formato.setLenient(false);
+
+                return formato.parse(fechaTexto);
+
+            }
+
+            catch(ParseException e) {
+
+                System.out.println(
+                    "Fecha inválida. Use dd/MM/yyyy"
+                );
+            }
         }
     }
 }

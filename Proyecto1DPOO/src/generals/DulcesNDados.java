@@ -59,7 +59,7 @@ public class DulcesNDados {
     // MAIN
     // =====================================================
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
         // Crear carpeta datos
         new File("datos").mkdirs();

@@ -48,7 +48,7 @@ public class GestorInventarioJuegos implements Serializable{
 	}
 
 	
-	public void comprarJuegos(String nombreJuego, double precio, Date fechaPublicacion,   int cantidad, String empresaProduccion,
+	public void comprarJuegosVentas(String nombreJuego, double precio, Date fechaPublicacion,   int cantidad, String empresaProduccion,
 			TipoDeJuego tipoDeJuego, int minJugadores, int maxJugadores, int edadMinima, String caracteristicas,
 			boolean dificil) {
 		
@@ -69,6 +69,30 @@ public class GestorInventarioJuegos implements Serializable{
 															"nuevo", //ESTADO
 															false); //PRESTADO
 			inventarioJuegos.agregarJuegoInventario(juego, nombreJuego, TipoInventario.VENTAS);
+		}
+	}
+	
+	public void comprarJuegosPrestamo(String nombreJuego, double precio, Date fechaPublicacion,   int cantidad, String empresaProduccion,
+			TipoDeJuego tipoDeJuego, int minJugadores, int maxJugadores, int edadMinima, String caracteristicas,
+			boolean dificil) {
+		
+		int i=0;
+		while (i<cantidad){		
+			String id=generadorID.generarIDJuego(nombreJuego);
+			JuegoDeMesaFisico juego= new JuegoDeMesaFisico( id, 
+															nombreJuego,
+															precio,
+															fechaPublicacion,
+															empresaProduccion, 
+															tipoDeJuego, 
+															minJugadores, 
+															maxJugadores, 
+															edadMinima, 
+															caracteristicas, 
+															dificil, 
+															"nuevo", //ESTADO
+															false); //PRESTADO
+			inventarioJuegos.agregarJuegoInventario(juego, nombreJuego, TipoInventario.PRESTAMO);
 		}
 	}
 	public void repararJuego(String idJuegoNuevo, String idJuegoViejo, String nombreJuego) {
