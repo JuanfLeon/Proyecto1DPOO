@@ -99,11 +99,16 @@ public class Informe implements Serializable{
 	@Override
 	public String toString() {
 
-	    return "Informe desde "
-	        + fechaInicio
-	        + " hasta "
-	        + fechaFin
-	        + " | Total: $"
-	        + totalCosto;
+	    return "Informe {" +
+	            "totalJuegos=" + totalJuegos +
+	            ", totalPlatillos=" + totalPlatillos +
+	            ", subTotalJuegos=" + subTotalJuegos +
+	            ", subTotalPlatillos=" + subTotalPlatillos +
+	            ", totalImpuestos=" + totalImpuestos +
+	            ", totalPropinas=" + totalPropinas +
+	            ", totalCosto=" + totalCosto +
+	            ", fechaInicio=" + fechaInicio +
+	            ", fechaFin=" + fechaFin +
+	            '}';
 	}
 }

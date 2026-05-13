@@ -3,6 +3,7 @@ package torneo;
 
 import java.util.ArrayList;
 
+import dataBase.Cliente;
 import dataBase.DataBase;
 import dataBase.Usuario;
 import exceptions.CupoNoDisponibleException;
@@ -59,20 +60,11 @@ public class GestorTorneos {
 	public void inscribirUsuariosTorneo(ArrayList<Usuario> usuarios, Torneo torneo) throws CupoNoDisponibleException{
 		try {
 			Inscripcion inscripcion= new Inscripcion(usuarios);
-			String nombreJuegoTorneo= torneo.getJuegoTorneo().getNombre();
 			
-			int cuposFavoritos= 0;
-			int cuposNormales=0;
-			for(Usuario u: usuarios) {
-				ArrayList<String> juegosFavoritos= u.getJuegosFavoritos();
-				
-				if (juegosFavoritos.contains(nombreJuegoTorneo)) {
-					cuposFavoritos++;
-				}
-				else {
-					cuposNormales++;
-				}
-			}
+			int[]cupos=contarTipoUsuarioInscrito(inscripcion, torneo);
+			int cuposFavoritos=cupos[0];
+			int cuposNormales=cupos[1];
+			
 			if (cuposFavoritos>torneo.getCantidadJuegoFavoritoDisponible()
 					|| cuposNormales>torneo.getCantidadParticipantesDisponible()) {
 				throw new CupoNoDisponibleException();
@@ -80,6 +72,15 @@ public class GestorTorneos {
 			}
 			else {
 				torneo.getInscripciones().add(inscripcion);
+				torneo.setCantidadJuegoFavoritoDisponible(
+										torneo.getCantidadJuegoFavoritoDisponible()-cuposFavoritos);
+				torneo.setCantidadParticipantesDisponible(
+										torneo.getCantidadParticipantesDisponible()-cuposNormales);
+				if (torneo instanceof TorneoCompetitivo) {
+					TorneoCompetitivo torneoCompetitivo= (TorneoCompetitivo) torneo;
+					torneoCompetitivo.setDineroRecaudado(
+						(cuposFavoritos+cuposNormales)*torneoCompetitivo.getPrecioEntrada());
+				}
 			}
 			
 		} catch (RestriccionJugadoresException e) {
@@ -87,7 +88,61 @@ public class GestorTorneos {
 		}
 	}
 	
+	public void desinscribirUsuariosTorneo(Usuario usuario, Torneo torneo) {
+		ArrayList<Inscripcion>inscripciones =torneo.getInscripciones();
+		boolean encontrado= false;
+		int i =0;
+		Inscripcion delInscripcion=null;
+		while(!encontrado && i<inscripciones.size()) {
+			Inscripcion inscripcion= inscripciones.get(i);
+			if (inscripcion.contieneUsuario(usuario)) {
+				encontrado=true;
+			}
+			i++;
+		}
+		
+		inscripciones.remove(delInscripcion);
+		int[] cupos=contarTipoUsuarioInscrito(delInscripcion, torneo);
+		torneo.setCantidadJuegoFavoritoDisponible(
+								torneo.getCantidadJuegoFavoritoDisponible()-cupos[0]);
+		torneo.setCantidadParticipantesDisponible(
+								torneo.getCantidadParticipantesDisponible()-cupos[1]);
+		
+	}
 	
+	
+	//aux inscribir desinscribir
+	
+	public int[] contarTipoUsuarioInscrito(Inscripcion inscripcion, Torneo torneo) {
+		
+		String nombreJuegoTorneo= torneo.getJuegoTorneo().getNombre();
+		int cuposFavoritos= 0;
+		int cuposNormales=0;
+		for(Usuario u: inscripcion.getUsuariosInscripcion()) {
+			ArrayList<String> juegosFavoritos= u.getJuegosFavoritos();
+			
+			if (juegosFavoritos.contains(nombreJuegoTorneo)) {
+				cuposFavoritos++;
+			}
+			else {
+				cuposNormales++;
+			}
+		}
+		return new int[] {cuposFavoritos,cuposNormales};
+	}
+		
+	
+	public void asignarGanadorTorneo(Cliente usuario, Torneo torneo) {
+
+		if (torneo instanceof TorneoAmistoso) {
+			usuario.setTieneBonoTorneo(true);
+		}
+		else if(torneo instanceof TorneoCompetitivo) {
+			TorneoCompetitivo torneoCompetitivo= (TorneoCompetitivo) torneo;
+			int premio = (int) Math.round(torneoCompetitivo.getDineroRecaudado());
+			usuario.setPuntosFidelidad((usuario.getPuntosFidelidad())+premio);
+		}
+	}
 	
 	
 	

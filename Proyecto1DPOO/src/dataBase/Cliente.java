@@ -13,20 +13,20 @@ public class Cliente extends Usuario implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public Cliente(String login, ArrayList<String> juegosFav, String contrasenia) {
-		super(login, juegosFav, contrasenia);
-	}
-
 	private String idCliente;
 	private double puntosFidelidad;
 	private Mesa mesa;
 	private ArrayList<JuegoDeMesaFisico> juegosPrestados;
 	private ArrayList<JuegoDeMesaFisico> juegosComprados;
+	private boolean tieneBonoTorneo;
 	
-	public void actualizarPuntosFidelidad() {
-		
-	}
 
+	
+	public Cliente(String login, ArrayList<String> juegosFav, String contrasenia) {
+		super(login, juegosFav, contrasenia);
+		this.tieneBonoTorneo=false;
+	}
+	
 	public String getIdCliente() {
 		return idCliente;
 	}
@@ -65,6 +65,14 @@ public class Cliente extends Usuario implements Serializable{
 
 	public void setJuegosComprados(ArrayList<JuegoDeMesaFisico> juegosComprados) {
 		this.juegosComprados = juegosComprados;
+	}
+
+	public boolean isTieneBonoTorneo() {
+		return tieneBonoTorneo;
+	}
+
+	public void setTieneBonoTorneo(boolean tieneBonoTorneo) {
+		this.tieneBonoTorneo = tieneBonoTorneo;
 	}
 	
 	@Override
