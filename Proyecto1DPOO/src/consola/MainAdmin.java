@@ -1,5 +1,6 @@
 package consola;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -9,6 +10,7 @@ import cafe.Producto;
 import dataBase.Cocinero;
 import dataBase.DataBase;
 import dataBase.Empleado;
+import dataBase.Factura;
 import dataBase.GestorSolicitudesPlatillos;
 import dataBase.GestorSolicitudesTurno;
 import dataBase.Mesero;
@@ -22,6 +24,7 @@ import generals.DulcesNDados;
 import tiendaDeJuegos.GestorInventarioJuegos;
 import tiendaDeJuegos.InventarioJuegos;
 import tiendaDeJuegos.JuegoDeMesaFisico;
+import tiendaDeJuegos.Prestamo;
 import tiendaDeJuegos.TipoDeJuego;
 
 public class MainAdmin {
@@ -494,11 +497,27 @@ public class MainAdmin {
     }
 
     static void consultarNumPrestamosJuego(InventarioJuegos tienda) {
-
+    	int numero = 0;
+    	String juego = ConsolaUtils.leerString("Ingrese el id del juego: ");
+    	ArrayList<Prestamo> historialp = tienda.getHistorialDePrestamos();
+    	for(Prestamo p: historialp) {
+    		if (p.getIdJuego().equals(juego)){
+    			numero += 1;
+    		}
+    	}
+    	System.out.print("El numero de prestamos del juego es de "+numero+" prestamos.");
     }
 
     static void consultarFechaPrestamoJuego(InventarioJuegos tienda) {
-
+    	ArrayList<LocalDate> fechas = new ArrayList<LocalDate>();
+    	String juego = ConsolaUtils.leerString("Ingrese el id del juego: ");
+    	ArrayList<Prestamo> historialp = tienda.getHistorialDePrestamos();
+    	for(Prestamo p: historialp) {
+    		if (p.getIdJuego().equals(juego)){
+    			fechas.add(p.getFechaInicio());
+    		}
+    	}
+    	System.out.print(fechas);
     }
 
     // =====================================================
@@ -506,6 +525,8 @@ public class MainAdmin {
     // =====================================================
 
     static void generarInforme(DataBase db) {
-
+    	LocalDate fechaInicio = ConsolaUtils.leerFechaLD("Fecha publicación: ");
+    	LocalDate fechaFin = ConsolaUtils.leerFechaLD("Fecha publicación: ");
+    	db.generarInforme(fechaInicio, fechaFin);
     }
 }
