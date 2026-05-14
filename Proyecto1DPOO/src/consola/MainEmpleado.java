@@ -154,6 +154,7 @@ public class MainEmpleado {
     			login = (Empleado) u;
     		}
     	}
+    	
     	String nom = ConsolaUtils.leerString("Ingrese el nombre del platillo: ");
     	double precio = ConsolaUtils.leerDouble("Ingrese el precio: ");
     	Producto prod = new Producto(nom, precio);
