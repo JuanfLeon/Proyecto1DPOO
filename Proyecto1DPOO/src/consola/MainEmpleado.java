@@ -1,7 +1,13 @@
 package consola;
 
+import java.util.ArrayList;
+
 import cafe.Cafe;
+import cafe.Producto;
 import dataBase.DataBase;
+import dataBase.Empleado;
+import dataBase.SolicitudSugerenciaPlatillo;
+import dataBase.Usuario;
 import generals.DulcesNDados;
 import tiendaDeJuegos.InventarioJuegos;
 
@@ -131,30 +137,35 @@ public class MainEmpleado {
 
     }
 
-    static void verTurnos(
-        DataBase db
-    ) {
-
+    static void verTurnos(DataBase db) {
+    	System.out.print(db.getTurnos());
     }
 
     // =====================================================
     // PLATILLOS
     // =====================================================
 
-    static void sugerirPlatillo(
-        Cafe cafe,
-        DataBase db
-    ) {
-
+    static void sugerirPlatillo(Cafe cafe, DataBase db) {
+    	String nom_e = ConsolaUtils.leerString("Ingrese su id de empleado: ");
+    	ArrayList<Usuario> cosos = db.getUsuarios();
+    	Empleado login = null;
+    	for (Usuario u: cosos) {
+    		if (u.getLogin().toLowerCase().equals(nom_e.toLowerCase())) {
+    			login = (Empleado) u;
+    		}
+    	}
+    	String nom = ConsolaUtils.leerString("Ingrese el nombre del platillo: ");
+    	double precio = ConsolaUtils.leerDouble("Ingrese el precio: ");
+    	Producto prod = new Producto(nom, precio);
+    	SolicitudSugerenciaPlatillo sol = new SolicitudSugerenciaPlatillo(prod, login);
+    	db.getSolicitudes().add(sol);
     }
 
     // =====================================================
     // SOLICITUDES
     // =====================================================
 
-    static void verSolicitudes(
-        DataBase db
-    ) {
-
+    static void verSolicitudes(DataBase db) {
+    	System.out.print(db.getSolicitudes());
     }
 }
