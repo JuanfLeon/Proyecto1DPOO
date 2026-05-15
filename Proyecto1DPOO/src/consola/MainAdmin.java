@@ -458,12 +458,186 @@ public class MainAdmin {
     // =====================================================
 
     static void asignarHorario(DataBase db) {
+    	System.out.println("\n--- ASIGNAR HORARIO ---");
+
+    	generals.DiaSemana[] dias = generals.DiaSemana.values();
+    	System.out.println("Dias disponibles:");
+    	for (int i = 0; i < dias.length; i++) {
+    		System.out.println((i + 1) + ". " + dias[i]);
+    	}
     	
+    	int opDia = ConsolaUtils.leerEntero("Seleccione el dia: ", 1, dias.length);
+    	generals.DiaSemana dia = dias[opDia - 1];
+    	int indiceDia = opDia - 1;
+
+    	if (db.getTurnos()[indiceDia] != null) {
+    		System.out.println("Ya existe un turno para " + dia + ". Use 'Modificar horario' para editarlo.");
+    		return;
+    	}
+
+    	ArrayList<dataBase.Mesero> meserosDisponibles = new ArrayList<>();
+    	for (dataBase.Usuario u : db.getUsuarios()) {
+    		if (u instanceof dataBase.Mesero) meserosDisponibles.add((dataBase.Mesero) u);
+    	}
+    	if (meserosDisponibles.size() < 2) {
+    		System.out.println("Se necesitan al menos 2 meseros registrados para crear un turno.");
+    		return;
+    	}
+
+    	System.out.println("\nMeseros disponibles:");
+    	for (int i = 0; i < meserosDisponibles.size(); i++) {
+    		System.out.println((i + 1) + ". " + meserosDisponibles.get(i).getLogin());
+    	}
+    	int cantMeseros = ConsolaUtils.leerEntero("Cuantos meseros asignar (min 2): ",
+    			2, meserosDisponibles.size());
+    	ArrayList<dataBase.Mesero> meserosAsignados = new ArrayList<>();
+    	for (int i = 0; i < cantMeseros; i++) {
+    		int op = ConsolaUtils.leerEntero("Mesero " + (i + 1) + ": ", 1, meserosDisponibles.size());
+    		dataBase.Mesero m = meserosDisponibles.get(op - 1);
+    		if (meserosAsignados.contains(m)) {
+    			System.out.println("Ya fue seleccionado. Elija otro.");
+    			i--;
+    		} else {
+    			meserosAsignados.add(m);
+    		}
+    	}
+
+    	ArrayList<dataBase.Cocinero> cocinerosDisponibles = new ArrayList<>();
+    	for (dataBase.Usuario u : db.getUsuarios()) {
+    		if (u instanceof dataBase.Cocinero) cocinerosDisponibles.add((dataBase.Cocinero) u);
+    	}
+    	if (cocinerosDisponibles.isEmpty()) {
+    		System.out.println("Se necesita al menos 1 cocinero registrado para crear un turno.");
+    		return;
+    	}
+
+    	System.out.println("\nCocineros disponibles:");
+    	for (int i = 0; i < cocinerosDisponibles.size(); i++) {
+    		System.out.println((i + 1) + ". " + cocinerosDisponibles.get(i).getLogin());
+    	}
+    	int cantCocineros = ConsolaUtils.leerEntero("Cuantos cocineros asignar (min 1): ",
+    			1, cocinerosDisponibles.size());
+    	ArrayList<dataBase.Cocinero> cocinerosAsignados = new ArrayList<>();
+    	for (int i = 0; i < cantCocineros; i++) {
+    		int op = ConsolaUtils.leerEntero("Cocinero " + (i + 1) + ": ", 1, cocinerosDisponibles.size());
+    		dataBase.Cocinero c = cocinerosDisponibles.get(op - 1);
+    		if (cocinerosAsignados.contains(c)) {
+    			System.out.println("Ya fue seleccionado. Elija otro.");
+    			i--;
+    		} else {
+    			cocinerosAsignados.add(c);
+    		}
+    	}
+
+    	try {
+    		dataBase.Turno nuevoTurno = new dataBase.Turno(dia, meserosAsignados, cocinerosAsignados);
+    		for (dataBase.Mesero m : meserosAsignados) m.agregarTurno(nuevoTurno);
+    		for (dataBase.Cocinero c : cocinerosAsignados) c.agregarTurno(nuevoTurno);
+    		db.getTurnos()[indiceDia] = nuevoTurno;
+    		System.out.println("Turno del " + dia + " creado con " + cantMeseros + " mesero(s) y " + cantCocineros + " cocinero(s).");
+    	} 
+    	catch (Exception e) {
+    		System.out.println("Error al crear turno: " + e.getMessage());
+    	}
     }
 
     static void modificarHorario(DataBase db) {
+    	System.out.println("\n---MODIFICAR HORARIO---");
+    	
+    	generals.DiaSemana[] dias = generals.DiaSemana.values();
+    	ArrayList<Integer> indicesConTurno = new ArrayList<>();
+    	System.out.println("Turnos actuales: ");
+    	for (int i = 0; i<db.getTurnos().length; i++) {
+    		if (db.getTurnos()[i] != null) {
+    			System.out.println((indicesConTurno.size() +1) + ". " + db.getTurnos()[i]);
+    			indicesConTurno.add(i);
+    		}
+    	}
+    	
+    	if (indicesConTurno.isEmpty()) {
+    		System.out.println("No hay turnos configurados. Use 'Asignar Horario' primero");
+    		return;
+    	}
+    	
+    	int opTurno = ConsolaUtils.leerEntero("Seleccione el turno a modificar: ", 1, indicesConTurno.size());
+    	int indiceTurno = indicesConTurno.get(opTurno -1);
+    	dataBase.Turno turno = db.getTurnos()[indiceTurno]; 
+    	
+    	System.out.println("\n ¿Qué desea modificar?");
+    	System.out.println("1. Agregar mesero");
+    	System.out.println("2. Eliminar mesero");
+    	System.out.println("3. Agregar cocinero");
+    	System.out.println("4. Eliminar cocinero");
+    	String accion = ConsolaUtils.leerString("Seleecione: ");
 
+    	try {
+    		if (accion.equals("1")) {
+    			ArrayList<dataBase.Mesero> disponibles = new ArrayList<>();
+    			for (dataBase.Usuario u : db.getUsuarios()) {
+    				if (u instanceof dataBase.Mesero && !turno.getMeseros().contains(u))
+    					disponibles.add((dataBase.Mesero) u);
+    			}
+    			if (disponibles.isEmpty()) {
+    				System.out.println("No hay meseros disponibles para agregar.");
+    				return;
+    			}
+    			for (int i = 0; i < disponibles.size(); i++)
+    				System.out.println((i + 1) + ". " + disponibles.get(i).getLogin());
+    			int op = ConsolaUtils.leerEntero("Seleccione mesero: ", 1, disponibles.size());
+    			turno.agregarMesero(disponibles.get(op - 1));
+    			System.out.println("Mesero agregado al turno.");
+
+    		} 
+    		
+    		else if (accion.equals("2")) {
+    			ArrayList<dataBase.Mesero> enTurno = turno.getMeseros();
+    			if (enTurno.isEmpty()) { System.out.println("No hay meseros en este turno."); 
+    			return; }
+    			for (int i = 0; i < enTurno.size(); i++)
+    				System.out.println((i + 1) + ". " + enTurno.get(i).getLogin());
+    			int op = ConsolaUtils.leerEntero("Seleccione mesero a eliminar: ", 1, enTurno.size());
+    			turno.eliminarMesero(enTurno.get(op - 1));
+    			System.out.println("Mesero eliminado del turno.");
+
+    		} 
+    		
+    		else if (accion.equals("3")) {
+    			ArrayList<dataBase.Cocinero> disponibles = new ArrayList<>();
+    			for (dataBase.Usuario u : db.getUsuarios()) {
+    				if (u instanceof dataBase.Cocinero && !turno.getCocineros().contains(u))
+    					disponibles.add((dataBase.Cocinero) u);
+    			}
+    			if (disponibles.isEmpty()) {
+    				System.out.println("No hay cocineros disponibles para agregar.");
+    				return;
+    			}
+    			for (int i = 0; i < disponibles.size(); i++)
+    				System.out.println((i + 1) + ". " + disponibles.get(i).getLogin());
+    			int op = ConsolaUtils.leerEntero("Seleccione cocinero: ", 1, disponibles.size());
+    			turno.agregarCocinero(disponibles.get(op - 1));
+    			System.out.println("Cocinero agregado al turno.");
+
+    		} 
+    		
+    		else if (accion.equals("4")) {
+    			ArrayList<dataBase.Cocinero> enTurno = turno.getCocineros();
+    			if (enTurno.isEmpty()) { System.out.println("No hay cocineros en este turno."); 
+    			return; }
+    			for (int i = 0; i < enTurno.size(); i++)
+    				System.out.println((i + 1) + ". " + enTurno.get(i).getLogin());
+    			int op = ConsolaUtils.leerEntero("Seleccione cocinero a eliminar: ", 1, enTurno.size());
+    			turno.eliminarCocinero(enTurno.get(op - 1));
+    			System.out.println("Cocinero eliminado del turno.");
+
+    		} else {
+    			System.out.println("Opcion invalida.");
+    		}
+    	} 
+    	catch (Exception e) {
+    		System.out.println("Error: " + e.getMessage());
+    	}
     }
+
 
     // =====================================================
     // CONSULTAS

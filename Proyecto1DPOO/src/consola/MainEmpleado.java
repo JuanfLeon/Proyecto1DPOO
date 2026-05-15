@@ -6,12 +6,16 @@ import cafe.Cafe;
 import cafe.Producto;
 import dataBase.DataBase;
 import dataBase.Empleado;
+import dataBase.SolicitudCambioTurno;
+import dataBase.SolicitudIntercambioTurno;
 import dataBase.SolicitudSugerenciaPlatillo;
+import dataBase.Turno;
 import dataBase.Usuario;
 import generals.DulcesNDados;
 import tiendaDeJuegos.InventarioJuegos;
 
 public class MainEmpleado {
+	static Empleado empleadoActivo = null ;
 
     // =====================================================
     // MAIN EMPLEADO
@@ -27,6 +31,7 @@ public class MainEmpleado {
             app.getTiendaDeJuegos();
 
         boolean salir = false;
+        empleadoActivo = null;
 
         while (!salir) {
 
@@ -125,20 +130,155 @@ public class MainEmpleado {
     // HORARIOS
     // =====================================================
 
-    static void solicitarCambioHorario(
-        DataBase db
-    ) {
-
+    static void solicitarCambioHorario(DataBase db) {
+    	System.out.println("\n--- SOLICITAR CAMBIO DE HORARIO ---");
+    	 
+        if (empleadoActivo == null) {
+            System.out.println("Debe iniciar sesion primero.");
+            return;
+        }
+ 
+        ArrayList<Turno> turnosEmpleado = empleadoActivo.getTurnoLaboral();
+        if (turnosEmpleado == null || turnosEmpleado.isEmpty()) {
+            System.out.println("No tiene turnos asignados actualmente.");
+            return;
+        }
+ 
+        System.out.println("\nSus turnos actuales:");
+        for (int i = 0; i < turnosEmpleado.size(); i++) {
+            System.out.println((i + 1) + ". " + turnosEmpleado.get(i));
+        }
+        int opActual = ConsolaUtils.leerEntero("Seleccione el turno que desea cambiar: ",
+                1, turnosEmpleado.size());
+        Turno turnoInicial = turnosEmpleado.get(opActual - 1);
+ 
+        ArrayList<Turno> turnosSistema = new ArrayList<>();
+        for (Turno t : db.getTurnos()) {
+            if (t != null && t != turnoInicial) turnosSistema.add(t);
+        }
+        if (turnosSistema.isEmpty()) {
+            System.out.println("No hay otros turnos configurados en el sistema.");
+            return;
+        }
+ 
+        System.out.println("\nTurnos disponibles:");
+        for (int i = 0; i < turnosSistema.size(); i++) {
+            System.out.println((i + 1) + ". " + turnosSistema.get(i));
+        }
+        int opDeseado = ConsolaUtils.leerEntero("Seleccione el turno deseado: ",
+                1, turnosSistema.size());
+        Turno turnoDeseado = turnosSistema.get(opDeseado - 1);
+ 
+        SolicitudCambioTurno solicitud =
+                empleadoActivo.solicitarCambioHorario(turnoInicial, turnoDeseado);
+        db.getSolicitudes().add(solicitud);
+ 
+        System.out.println("Solicitud de cambio enviada.");
+        System.out.println("  Turno actual:  " + turnoInicial.getDia_turno());
+        System.out.println("  Turno deseado: " + turnoDeseado.getDia_turno());
+        System.out.println("Pendiente de aprobacion por el administrador.");
     }
 
-    static void solicitarIntercambioHorario(
-        DataBase db
-    ) {
-
+    
+    static void solicitarIntercambioHorario(DataBase db) {
+    	System.out.println("\n--- SOLICITAR INTERCAMBIO DE HORARIO ---");
+    	 
+        if (empleadoActivo == null) {
+            System.out.println("Debe iniciar sesion primero.");
+            return;
+        }
+ 
+        ArrayList<Turno> turnosEmpleado = empleadoActivo.getTurnoLaboral();
+        if (turnosEmpleado == null || turnosEmpleado.isEmpty()) {
+            System.out.println("No tiene turnos asignados actualmente.");
+            return;
+        }
+ 
+        System.out.println("\nSus turnos actuales:");
+        for (int i = 0; i < turnosEmpleado.size(); i++) {
+            System.out.println((i + 1) + ". " + turnosEmpleado.get(i));
+        }
+        
+        int opActual = ConsolaUtils.leerEntero("Seleccione el turno que desea ceder: ",
+                1, turnosEmpleado.size());
+        Turno turnoInicial = turnosEmpleado.get(opActual - 1);
+ 
+        
+        ArrayList<Empleado> otrosEmpleados = new ArrayList<>();
+        for (Usuario u : db.getUsuarios()) {
+            if (u instanceof Empleado && u != empleadoActivo
+                    && u.getClass().equals(empleadoActivo.getClass())) {
+                otrosEmpleados.add((Empleado) u);
+            }
+        }
+        if (otrosEmpleados.isEmpty()) {
+            System.out.println("No hay otros empleados del mismo tipo en el sistema.");
+            return;
+        }
+ 
+        System.out.println("\nEmpleados disponibles para intercambio:");
+        for (int i = 0; i < otrosEmpleados.size(); i++) {
+            System.out.println((i + 1) + ". " + otrosEmpleados.get(i).getLogin());
+        }
+        int opEmp = ConsolaUtils.leerEntero("Seleccione el empleado: ", 1, otrosEmpleados.size());
+        Empleado otroEmpleado = otrosEmpleados.get(opEmp - 1);
+ 
+        
+        ArrayList<Turno> turnosOtro = otroEmpleado.getTurnoLaboral();
+        if (turnosOtro == null || turnosOtro.isEmpty()) {
+            System.out.println("El empleado seleccionado no tiene turnos asignados.");
+            return;
+        }
+ 
+        System.out.println("\nTurnos de " + otroEmpleado.getLogin() + ":");
+        for (int i = 0; i < turnosOtro.size(); i++) {
+            System.out.println((i + 1) + ". " + turnosOtro.get(i));
+        }
+        int opDeseado = ConsolaUtils.leerEntero("Seleccione el turno a recibir: ", 1, turnosOtro.size());
+        Turno turnoDeseado = turnosOtro.get(opDeseado - 1);
+ 
+        SolicitudIntercambioTurno solicitud = empleadoActivo.solicitarIntercambioHorario(turnoInicial, turnoDeseado, otroEmpleado);
+        db.getSolicitudes().add(solicitud);
+ 
+        System.out.println("Solicitud de intercambio enviada.");
+        System.out.println("  Su turno:    " + turnoInicial.getDia_turno()
+                + "  <->  Turno de " + otroEmpleado.getLogin()
+                + ": " + turnoDeseado.getDia_turno());
+        System.out.println("Pendiente de aprobacion por el administrador.");
     }
 
+    
     static void verTurnos(DataBase db) {
-    	System.out.print(db.getTurnos());
+    	System.out.println("\n--- MIS TURNOS ---");
+    	 
+        if (empleadoActivo == null) {
+            System.out.println("Debe iniciar sesion primero.");
+            return;
+        }
+ 
+        ArrayList<Turno> turnosEmpleado = empleadoActivo.getTurnoLaboral();
+        if (turnosEmpleado == null || turnosEmpleado.isEmpty()) {
+            System.out.println("No tiene turnos asignados.");
+        } else {
+            System.out.println("Turnos de " + empleadoActivo.getLogin() + ":");
+            for (Turno t : turnosEmpleado) {
+                System.out.println("  - " + t.getDia_turno()
+                        + " | Meseros: " + t.getMeseros().size()
+                        + " | Cocineros: " + t.getCocineros().size());
+            }
+        }
+ 
+        System.out.println("\nTodos los turnos del sistema:");
+        boolean hayAlguno = false;
+        for (Turno t : db.getTurnos()) {
+            if (t != null) {
+                System.out.println("  " + t);
+                hayAlguno = true;
+            }
+        }
+        if (!hayAlguno) {
+            System.out.println("  No hay turnos configurados en el sistema.");
+        }
     }
 
     // =====================================================
