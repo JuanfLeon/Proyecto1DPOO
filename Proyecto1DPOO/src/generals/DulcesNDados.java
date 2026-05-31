@@ -206,7 +206,7 @@ public class DulcesNDados {
 
 	
 	//LECTURA DE DATOS
-	private void cargarDatosDataBase(String ruta){
+	public void cargarDatosDataBase(String ruta){
 		IPersistenciaDataBase interfazPersistencia= CentralPersistencia.getPersistenciaDataBaseSerializacion("BIN");
 		try {
 			DataBase dataBase= interfazPersistencia.cargarDataBase(ruta);
@@ -218,7 +218,7 @@ public class DulcesNDados {
 		
 	}
 
-	private void cargarDatosTienda(String ruta) {
+	public void cargarDatosTienda(String ruta) {
 		IPersistenciaTiendaDeJuegos interfazPersistencia= CentralPersistencia.getPersistenciaTiendaDeJuegos("BIN");
 		try {
 			InventarioJuegos tienda= interfazPersistencia.cargarTiendaDeJuegos(ruta);
