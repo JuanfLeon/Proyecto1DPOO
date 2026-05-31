@@ -25,4 +25,10 @@ public class SolicitudSugerenciaPlatillo extends Solicitud implements Serializab
 	public void setPlatilloSugerido(Producto platilloSugerido) {
 		this.platilloSugerido = platilloSugerido;
 	}
+	@Override
+	public String toString()
+	{
+	    return "Sugerencia de platillo: "
+	            + platilloSugerido.getNombre();
+	}
 }

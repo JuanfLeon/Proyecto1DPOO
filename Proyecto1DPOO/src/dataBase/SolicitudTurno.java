@@ -34,4 +34,13 @@ public abstract class SolicitudTurno extends Solicitud implements Serializable{
 		this.turnoDeseado = turnoDeseado;
 	}
 	
+	@Override
+	public String toString()
+	{
+	    return getClass().getSimpleName()
+	            + " | "
+	            + turnoInicial.getDia_turno()
+	            + " -> "
+	            + turnoDeseado.getDia_turno();
+	}
 }
