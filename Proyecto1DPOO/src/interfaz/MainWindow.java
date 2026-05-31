@@ -88,7 +88,7 @@ public class MainWindow {
         tabs.setBackground(COLOR_FONDO);
 
         tabs.addTab("Cliente",       new PanelCliente(app));
-        // tabs.addTab("Administrador", new PanelAdmin(app));
+        //tabs.addTab("Administrador", new PanelAdmin(app));
         tabs.addTab("Empleado",      new PanelEmpleado(app, null, app.getDataBase()));
 
         root.add(tabs, BorderLayout.CENTER);
