@@ -45,7 +45,7 @@ public class PanelAdmin extends JPanel {
     private static final long serialVersionUID = 1L;
 
     // =========================================================
-    // COLORES Y FUENTES (mismo estilo que PanelCliente)
+    // COLORES Y FUENTES
     // =========================================================
     private static final Color COLOR_PRIMARIO = new Color(52, 73, 94);
     private static final Color COLOR_ACENTO   = new Color(231, 76, 60);
@@ -88,10 +88,7 @@ public class PanelAdmin extends JPanel {
         sidebar.setLayout(new BoxLayout(sidebar, BoxLayout.Y_AXIS));
         sidebar.setBackground(new Color(44, 62, 80));
         sidebar.setBorder(new EmptyBorder(16, 0, 16, 0));
-        // NO se fija aquí el alto: el BoxLayout debe poder reportar su altura real
-        // para que el JScrollPane sepa cuándo mostrar la barra de scroll.
-
-        // Contenido central con CardLayout
+        
         CardLayout cl = new CardLayout();
         JPanel contenido = new JPanel(cl);
         contenido.setBackground(COLOR_FONDO);
@@ -1119,7 +1116,7 @@ public class PanelAdmin extends JPanel {
     }
 
     // =========================================================
-    // FÁBRICA DE COMPONENTES (mismo estilo que PanelCliente)
+    // FÁBRICA DE COMPONENTES
     // =========================================================
 
     private JPanel panelContenido(String titulo) {
